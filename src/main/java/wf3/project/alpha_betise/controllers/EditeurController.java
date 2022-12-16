@@ -14,7 +14,7 @@ public class EditeurController {
     @Autowired
     private EditeurService editeurService;
 
-    @GetMapping("")
+    @GetMapping("/all")
     public List<Editeur> getAll() {
         return editeurService.getAll();
     }
