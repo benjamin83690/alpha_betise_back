@@ -15,7 +15,7 @@ import lombok.NonNull;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "commentaireUtilisateur")
+@Table(name = "commentaires_utilisateurs")
 
 public class CommentaireUtilisateur {
 
