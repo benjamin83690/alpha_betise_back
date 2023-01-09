@@ -1,12 +1,14 @@
 package wf3.project.alpha_betise.entities;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 import org.springframework.format.annotation.DateTimeFormat;
@@ -44,4 +46,7 @@ public class Evenement {
 	@NonNull
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	private LocalDate date;
+
+	@ManyToMany(mappedBy = "evenementsUtilisateur")
+	private List<Utilisateur> utilisateurs;
 }
