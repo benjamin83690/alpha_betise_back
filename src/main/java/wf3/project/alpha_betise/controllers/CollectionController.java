@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import wf3.project.alpha_betise.entities.Collection;
+import wf3.project.alpha_betise.entities.CollectionLivre;
 import wf3.project.alpha_betise.services.CollectionService;
 
 @RestController
@@ -20,17 +20,17 @@ public class CollectionController {
 	private CollectionService collectionService;
 
 	@GetMapping("/all")
-	public List<Collection> getAll() {
+	public List<CollectionLivre> getAll() {
 		return collectionService.getAll();
 	}
 
 	@GetMapping("/{id}")
-	public Collection get(@PathVariable("id") Integer id) throws Exception {
+	public CollectionLivre get(@PathVariable("id") Integer id) throws Exception {
 		return collectionService.get(id);
 	}
 
 	@PostMapping
-	public Collection post(Collection collection) {
+	public CollectionLivre post(CollectionLivre collection) {
 		return collectionService.post(collection);
 	}
 

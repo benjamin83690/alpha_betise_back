@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import wf3.project.alpha_betise.entities.Collection;
+import wf3.project.alpha_betise.entities.CollectionLivre;
 import wf3.project.alpha_betise.repositories.CollectionRepository;
 import wf3.project.alpha_betise.services.CollectionService;
 
@@ -17,17 +17,17 @@ public class CollectionServiceImpl implements CollectionService {
 	CollectionRepository collectionRepository;
 	
 	@Override
-    public List<Collection> getAll() {
+    public List<CollectionLivre> getAll() {
         return collectionRepository.findAll();
     }
 
     @Override
-    public Collection get(Integer id) throws Exception {
+    public CollectionLivre get(Integer id) throws Exception {
         return collectionRepository.findById(id).orElseThrow(() -> new Exception("Collection introuvable"));
     }
 
     @Override
-    public Collection post(Collection collection) {
+    public CollectionLivre post(CollectionLivre collection) {
         return collectionRepository.save(collection);
     }
 
