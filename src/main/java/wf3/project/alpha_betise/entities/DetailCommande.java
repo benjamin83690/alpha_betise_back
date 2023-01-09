@@ -15,7 +15,7 @@ import lombok.NonNull;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "detailCommande")
+@Table(name = "details_commande")
 public class DetailCommande {
 
 	@Id
@@ -25,4 +25,6 @@ public class DetailCommande {
 
 	@NonNull
 	private String livre_code_isbn;
+
+	private Integer quantite;
 }
