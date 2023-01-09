@@ -1,12 +1,10 @@
 package wf3.project.alpha_betise.entities;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -14,6 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -55,7 +54,13 @@ public class Utilisateur {
 	@JoinColumn(name = "role_id", nullable = false)
 	private Role role;
 
-	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@ManyToMany
 	@JoinTable(name = "evenements_utilisateur", joinColumns = @JoinColumn(name = "utilisateur_id"), inverseJoinColumns = @JoinColumn(name = "evenement_id"))
-	private List<Evenement> evenementsUtilisateur = new ArrayList<Evenement>();
+	private List<Evenement> evenementId;
+
+	@OneToMany(mappedBy = "utilisateurId", cascade = CascadeType.ALL)
+	private List<CommentaireUtilisateur> commentaires;
+
+	@OneToMany(mappedBy = "utilisateurId")
+	private List<Commande> commandes;
 }

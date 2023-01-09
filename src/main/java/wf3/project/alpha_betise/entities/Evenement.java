@@ -28,6 +28,7 @@ public class Evenement {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@NonNull
+	@Column(name = "evenement_id")
 	private Integer id;
 
 	@NonNull
@@ -47,6 +48,6 @@ public class Evenement {
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	private LocalDate date;
 
-	@ManyToMany(mappedBy = "evenementsUtilisateur")
+	@ManyToMany(mappedBy = "evenementId")
 	private List<Utilisateur> utilisateurs;
 }
