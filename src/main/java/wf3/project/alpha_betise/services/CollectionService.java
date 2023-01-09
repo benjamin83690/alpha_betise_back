@@ -2,15 +2,15 @@ package wf3.project.alpha_betise.services;
 
 import java.util.List;
 
-import wf3.project.alpha_betise.entities.Collection;
+import wf3.project.alpha_betise.entities.CollectionLivre;
 
 public interface CollectionService {
 	
-	public List<Collection> getAll();
+	public List<CollectionLivre> getAll();
 
-    public Collection get(Integer id) throws Exception;
+    public CollectionLivre get(Integer id) throws Exception;
 
-    public Collection post(Collection collection);
+    public CollectionLivre post(CollectionLivre collection);
 
     public void delete(Integer id);
 }

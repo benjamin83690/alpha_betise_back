@@ -3,9 +3,9 @@ package wf3.project.alpha_betise.repositories;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import wf3.project.alpha_betise.entities.Collection;
+import wf3.project.alpha_betise.entities.CollectionLivre;
 
 @Repository
-public interface CollectionRepository extends JpaRepository<Collection, Integer>{
+public interface CollectionRepository extends JpaRepository<CollectionLivre, Integer>{
 	
 }

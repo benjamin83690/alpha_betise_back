@@ -17,7 +17,7 @@ import lombok.NonNull;
 @AllArgsConstructor
 @Table(name = "collections")
 
-public class Collection {
+public class CollectionLivre {
 	
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
