@@ -20,7 +20,7 @@ public class DetailCommandeController {
 	@Autowired
 	private DetailCommandeService detailCommandeService;
 
-	@GetMapping("/detailCommande")
+	@GetMapping("/all")
 	public List<DetailCommande> getAll() {
 		return detailCommandeService.getAll();
 	}

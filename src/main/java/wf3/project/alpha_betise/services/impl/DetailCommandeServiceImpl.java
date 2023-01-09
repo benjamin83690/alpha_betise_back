@@ -24,7 +24,7 @@ public class DetailCommandeServiceImpl implements DetailCommandeService {
 
 	@Override
 	public DetailCommande get(Integer id) throws Exception {
-		return detailCommandeRepository.findById(id).orElseThrow(() -> new Exception("auteur introuvable"));
+		return detailCommandeRepository.findById(id).orElseThrow(() -> new Exception("commande introuvable"));
 	}
 
 	@Override
