@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.NonNull;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Data
@@ -21,4 +22,7 @@ public class CategorieLivre {
 
     @NonNull
     private String libelle;
+
+    @OneToMany(mappedBy = "categorieLivre")
+    private List<Livre> livres;
 }
