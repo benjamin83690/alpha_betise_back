@@ -19,7 +19,6 @@ public class Role {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@NonNull
 	@Column(name = "role_id")
 	private Integer id;
 
