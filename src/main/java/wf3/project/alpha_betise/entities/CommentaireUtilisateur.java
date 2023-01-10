@@ -27,7 +27,7 @@ public class CommentaireUtilisateur {
 	@NonNull
 	private Integer id;
 
-	private Integer note;
+	private Byte note;
 
 	private String commentaire;
 
