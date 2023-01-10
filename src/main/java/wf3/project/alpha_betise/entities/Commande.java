@@ -1,16 +1,9 @@
 package wf3.project.alpha_betise.entities;
 
 import java.time.LocalDate;
+import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -51,4 +44,7 @@ public class Commande {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "utilisateur_id")
 	private Utilisateur utilisateurId;
+
+	@OneToMany(mappedBy = "commande", cascade = CascadeType.REMOVE)
+	private List<DetailCommande> detailsCommande;
 }
