@@ -64,6 +64,10 @@ public class Livre {
     private CategorieLivre categorieLivre;
 
     @ManyToOne
+    @JoinColumn(name = "collection_id")
+    private CollectionLivre collectionLivre;
+
+    @ManyToOne
     @JoinColumn(name = "editeur_id")
     private Editeur editeur;
 

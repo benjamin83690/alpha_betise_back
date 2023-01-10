@@ -1,15 +1,13 @@
 package wf3.project.alpha_betise.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
+
+import java.util.List;
 
 @Entity
 @Data
@@ -22,7 +20,11 @@ public class CollectionLivre {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+
 	@NonNull
 	private String nom;
+
+	@OneToMany(mappedBy = "collectionLivre")
+	private List<Livre> livres;
 	
 }

@@ -1,10 +1,6 @@
 package wf3.project.alpha_betise.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -18,13 +14,19 @@ import lombok.NonNull;
 @Table(name = "details_commande")
 public class DetailCommande {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@NonNull
-	private Integer id;
+	@EmbeddedId
+	private DetailCommandePK id;
+
+	@OneToOne
+	@MapsId("livreIsbn")
+	@JoinColumn(name = "livre_isbn")
+	private Livre livre;
+
+	@ManyToOne
+	@MapsId("commandeId")
+	@JoinColumn(name = "commande_id")
+	private Commande commande;
 
 	@NonNull
-	private String livre_code_isbn;
-
 	private Integer quantite;
 }
