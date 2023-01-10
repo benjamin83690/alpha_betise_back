@@ -14,6 +14,8 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.Pattern;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -40,9 +42,11 @@ public class Utilisateur {
 	private String prenom;
 
 	@NonNull
+	@Email(message = "Le format de l'email est invalide")
 	private String email;
 
 	@NonNull
+	@Pattern(regexp = "#^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,}$#", message = "Le format du mot de passe est incorrect")
 	private String motDePasse;
 
 	@NonNull
