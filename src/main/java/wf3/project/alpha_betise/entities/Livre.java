@@ -71,7 +71,7 @@ public class Livre {
     @JoinColumn(name = "editeur_id")
     private Editeur editeur;
 
-    @OneToMany(mappedBy = "livre", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "livre", cascade = CascadeType.REMOVE)
     private List<PhotoLivre> photosLivre;
 
     @ManyToOne
@@ -82,7 +82,7 @@ public class Livre {
     @JoinColumn(name = "etat_stock_id")
     private EtatStock etatStock;
 
-    @OneToMany(mappedBy = "livre", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "livre", cascade = CascadeType.REMOVE)
     private List<CommentaireUtilisateur> commentairesUtilsateur;
 
     @ManyToMany
@@ -91,5 +91,8 @@ public class Livre {
             joinColumns = @JoinColumn(name = "auteur_id"),
             inverseJoinColumns = @JoinColumn(name = "livre_isbn"))
     private List<Auteur> auteurs;
+
+    @OneToMany(mappedBy = "livre")
+    private List<DetailCommande> detailsCommande;
 
 }

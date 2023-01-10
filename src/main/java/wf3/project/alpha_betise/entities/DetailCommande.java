@@ -17,7 +17,7 @@ public class DetailCommande {
 	@EmbeddedId
 	private DetailCommandePK id;
 
-	@OneToOne
+	@ManyToOne
 	@MapsId("livreIsbn")
 	@JoinColumn(name = "livre_isbn")
 	private Livre livre;
