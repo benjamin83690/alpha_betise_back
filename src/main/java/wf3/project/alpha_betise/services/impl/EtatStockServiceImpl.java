@@ -2,11 +2,10 @@ package wf3.project.alpha_betise.services.impl;
 
 import java.util.List;
 
-import javax.transaction.Transactional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import jakarta.transaction.Transactional;
 import wf3.project.alpha_betise.entities.EtatStock;
 import wf3.project.alpha_betise.repositories.EtatStockRepository;
 import wf3.project.alpha_betise.services.EtatStockService;
