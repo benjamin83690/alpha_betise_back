@@ -1,11 +1,6 @@
 package wf3.project.alpha_betise.entities;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -26,4 +21,8 @@ public class PhotoLivre {
 
 	@Column(name = "path_url")
 	private String pathUrl;
+
+	@ManyToOne
+	@JoinColumn(name = "livre_isbn")
+	private Livre livre;
 }

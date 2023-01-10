@@ -8,6 +8,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Data
@@ -15,6 +16,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @Table(name = "livres")
 public class Livre {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @NonNull
@@ -56,4 +58,34 @@ public class Livre {
 
     @NonNull
     private Float epaisseur;
+
+    @ManyToOne
+    @JoinColumn(name = "categorie_livre_id")
+    private CategorieLivre categorieLivre;
+
+    @ManyToOne
+    @JoinColumn(name = "editeur_id")
+    private Editeur editeur;
+
+    @OneToMany(mappedBy = "livre", cascade = CascadeType.ALL)
+    private List<PhotoLivre> photosLivre;
+
+    @ManyToOne
+    @JoinColumn(name = "langue_id")
+    private Langue langue;
+
+    @ManyToOne
+    @JoinColumn(name = "etat_stock_id")
+    private EtatStock etatStock;
+
+    @OneToMany(mappedBy = "livre", cascade = CascadeType.ALL)
+    private List<CommentaireUtilisateur> commentairesUtilsateur;
+
+    @ManyToMany
+    @JoinTable(
+            name = "auteurs_livres",
+            joinColumns = @JoinColumn(name = "auteur_id"),
+            inverseJoinColumns = @JoinColumn(name = "livre_isbn"))
+    private List<Auteur> auteurs;
+
 }

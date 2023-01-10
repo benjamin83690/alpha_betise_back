@@ -34,4 +34,8 @@ public class CommentaireUtilisateur {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "utilisateur_id", referencedColumnName = "utilisateur_id")
 	private Utilisateur utilisateurId;
+
+	@ManyToOne
+	@JoinColumn(name = "livre_isbn")
+	private Livre livre;
 }

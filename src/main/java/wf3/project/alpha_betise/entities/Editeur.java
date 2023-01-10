@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.NonNull;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Data
@@ -20,4 +21,7 @@ public class Editeur {
 
     @NonNull
     private String nom;
+
+    @OneToMany(mappedBy = "editeur")
+    private List<Livre> livres;
 }
