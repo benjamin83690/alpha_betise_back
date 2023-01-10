@@ -34,12 +34,14 @@ public class Commande {
 	private Integer prixTotal;
 
 	@NonNull
-	@Column(name = "adresse_livraison")
-	private String adresseLivraison;
+	private String rue;
 
 	@NonNull
-	@Column(name = "adresse_facturation")
-	private String adresseFacturation;
+	private String ville;
+
+	@NonNull
+	@JoinColumn(name = "code_postal")
+	private String codePostal;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "utilisateur_id")
