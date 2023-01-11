@@ -1,8 +1,8 @@
 package wf3.project.alpha_betise.utils;
 
-import org.hibernate.dialect.MySQL5Dialect;
+import org.hibernate.dialect.MySQLDialect;
 
-public class MySQL5InnoDBDialectUtf8mb4 extends MySQL5Dialect {
+public class MySQLInnoDBDialectUtf8mb4 extends MySQLDialect {
 
     @Override
     public String getTableTypeString() {
