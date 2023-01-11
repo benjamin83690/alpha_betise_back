@@ -58,4 +58,8 @@ public class Commande {
 
 	@OneToMany(mappedBy = "commande", cascade = CascadeType.REMOVE)
 	private List<DetailCommande> detailsCommande;
+
+	@ManyToOne
+	@JoinColumn(name = "etat_commande_id")
+	private EtatCommande etatCommande;
 }
