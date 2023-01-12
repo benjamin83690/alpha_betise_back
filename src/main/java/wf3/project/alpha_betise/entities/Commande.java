@@ -50,7 +50,7 @@ public class Commande {
 
 	@NonNull
 	@JoinColumn(name = "code_postal")
-	private String codePostal;
+	private Integer codePostal;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "utilisateur_id")
