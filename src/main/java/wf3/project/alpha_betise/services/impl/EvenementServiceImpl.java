@@ -23,7 +23,7 @@ public class EvenementServiceImpl implements EvenementService {
 	}
 
 	@Override
-	public Evenement get(Integer id) throws Exception {
+	public Evenement get(Long id) throws Exception {
 		return evenementRepository.findById(id).orElseThrow(() -> new Exception("Evenement introuvable."));
 	}
 
@@ -33,7 +33,7 @@ public class EvenementServiceImpl implements EvenementService {
 	}
 
 	@Override
-	public void delete(Integer id) {
+	public void delete(Long id) {
 		evenementRepository.deleteById(id);
 	}
 

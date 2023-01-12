@@ -6,6 +6,10 @@ import java.util.List;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -27,20 +31,20 @@ import lombok.NonNull;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "evenements")
+@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id", scope = Evenement.class)
 public class Evenement {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "evenement_id")
-	private Integer id;
+	private Long id;
 
 	@NonNull
 	private String titre;
 
-	@Column(name = "max_participants")
 	private Integer maxParticipants;
 
-	@Column(name = "age_public")
 	private String agePublic;
 
 	private Float prix;
@@ -51,21 +55,24 @@ public class Evenement {
 
 	private String codePostal;
 
+	@Column(columnDefinition = "text")
 	private String description;
 
 	@NonNull
 	@DateTimeFormat(pattern = "dd-MM-yyyy")
+	@Column(name = "date_evenement")
 	private LocalDate date;
 
 	@NonNull
 	@DateTimeFormat(pattern = "HH:mm")
-	private LocalTime heureDuRdv;
+	private LocalTime heureEvenement;
 
 	@ManyToMany(mappedBy = "evenementId")
 	private List<Utilisateur> utilisateurs;
 
-	@ManyToOne
+	@ManyToOne()
 	@JoinColumn(name = "livre_isbn")
+	@JsonIgnoreProperties()
 	private Livre livre;
 
 	@ManyToMany(cascade = CascadeType.REMOVE)

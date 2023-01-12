@@ -8,9 +8,9 @@ public interface DetailCommandeService {
 
 	public List<DetailCommande> getAll();
 
-	public DetailCommande get(Integer id) throws Exception;
+	public DetailCommande get(Long id) throws Exception;
 
 	public DetailCommande post(DetailCommande detailCommande);
 
-	public void delete(Integer id);
+	public void delete(Long id);
 }

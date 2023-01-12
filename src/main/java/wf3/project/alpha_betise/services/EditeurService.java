@@ -1,16 +1,16 @@
 package wf3.project.alpha_betise.services;
 
-import wf3.project.alpha_betise.entities.Editeur;
-
 import java.util.List;
+
+import wf3.project.alpha_betise.entities.Editeur;
 
 public interface EditeurService {
 
     public List<Editeur> getAll();
 
-    public Editeur get(Integer id) throws Exception;
+	public Editeur get(Long id) throws Exception;
 
     public Editeur post(Editeur editeur);
 
-    public void delete(Integer id);
+	public void delete(Long id);
 }

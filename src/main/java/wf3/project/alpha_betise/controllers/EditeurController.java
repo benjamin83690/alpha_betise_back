@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -27,17 +28,17 @@ public class EditeurController {
     }
 
     @GetMapping("/{id}")
-    public Editeur get(@PathVariable("id") Integer id) throws Exception {
+	public Editeur get(@PathVariable("id") Long id) throws Exception {
         return editeurService.get(id);
     }
 
     @PostMapping
-    public Editeur post(Editeur editeur) {
+	public Editeur post(@RequestBody Editeur editeur) {
         return editeurService.post(editeur);
     }
 
     @DeleteMapping("{id}")
-    public void delete(@PathVariable("id") Integer id) {
+	public void delete(@PathVariable("id") Long id) {
         editeurService.delete(id);
     }
 }

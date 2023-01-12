@@ -23,7 +23,7 @@ public class LangueServiceImpl implements LangueService {
 	}
 
 	@Override
-	public Langue get(Integer id) throws Exception {
+	public Langue get(Long id) throws Exception {
 		return langueRepository.findById(id).orElseThrow(() -> new Exception("Element introuvable"));
 	}
 
@@ -33,7 +33,7 @@ public class LangueServiceImpl implements LangueService {
 	}
 
 	@Override
-	public void delete(Integer id) {
+	public void delete(Long id) {
 		langueRepository.deleteById(id);
 	}
 

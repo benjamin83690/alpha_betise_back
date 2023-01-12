@@ -27,7 +27,7 @@ public class EtatStockController {
 	}
 
 	@GetMapping("/{id}")
-	public EtatStock get(@PathVariable("id") Integer id) throws Exception {
+	public EtatStock get(@PathVariable("id") Long id) throws Exception {
 		return etatStockService.get(id);
 	}
 
@@ -37,7 +37,7 @@ public class EtatStockController {
 	}
 
 	@DeleteMapping("/{id}")
-	public void delete(@PathVariable("id") Integer id) {
+	public void delete(@PathVariable("id") Long id) {
 		etatStockService.delete(id);
 	}
 }

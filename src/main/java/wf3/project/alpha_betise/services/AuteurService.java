@@ -8,9 +8,9 @@ public interface AuteurService {
 
 	public List<Auteur> getAll();
 
-	public Auteur get(Integer id) throws Exception;
+	public Auteur get(Long id) throws Exception;
 
 	public Auteur post(Auteur auteur);
 
-	public void delete(Integer id);
+	public void delete(Long id);
 }

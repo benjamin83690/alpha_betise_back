@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import wf3.project.alpha_betise.entities.EtatCommande;
 
 @Repository
-public interface EtatCommandeRepository extends JpaRepository<EtatCommande, Integer> {
+public interface EtatCommandeRepository extends JpaRepository<EtatCommande, Long> {
 
 }

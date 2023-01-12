@@ -38,7 +38,7 @@ public class Utilisateur implements UserDetails {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "utilisateur_id")
-	private Integer id;
+	private Long id;
 
 	@NonNull
 	private String nom;

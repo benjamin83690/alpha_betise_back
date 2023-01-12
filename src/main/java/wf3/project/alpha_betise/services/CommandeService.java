@@ -8,9 +8,9 @@ public interface CommandeService {
 
 	public List<Commande> getAll();
 
-	public Commande get(Integer id) throws Exception;
+	public Commande get(Long id) throws Exception;
 
 	public Commande post(Commande commande);
 
-	public void delete(Integer id);
+	public void delete(Long id);
 }

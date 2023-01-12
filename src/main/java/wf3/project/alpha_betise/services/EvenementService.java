@@ -8,9 +8,9 @@ public interface EvenementService {
 
 	public List<Evenement> getAll();
 
-	public Evenement get(Integer id) throws Exception;
+	public Evenement get(Long id) throws Exception;
 
 	public Evenement post(Evenement evenement);
 
-	public void delete(Integer id);
+	public void delete(Long id);
 }

@@ -8,9 +8,9 @@ public interface RoleService {
 
 	public List<Role> getAll();
 
-	public Role get(Integer id) throws Exception;
+	public Role get(Long id) throws Exception;
 
 	public Role post(Role role);
 
-	public void delete(Integer id);
+	public void delete(Long id);
 }

@@ -8,9 +8,9 @@ public interface PhotoLivreService {
 
 	public List<PhotoLivre> getAll();
 
-	public PhotoLivre get(Integer id) throws Exception;
+	public PhotoLivre get(Long id) throws Exception;
 
 	public PhotoLivre post(PhotoLivre photoLivre);
 
-	public void delete(Integer id);
+	public void delete(Long id);
 }

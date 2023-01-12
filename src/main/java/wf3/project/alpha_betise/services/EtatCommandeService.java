@@ -8,9 +8,9 @@ public interface EtatCommandeService {
 
 	public List<EtatCommande> getAll();
 
-	public EtatCommande get(Integer id) throws Exception;
+	public EtatCommande get(Long id) throws Exception;
 
 	public EtatCommande post(EtatCommande etatCommande);
 
-	public void delete(Integer id);
+	public void delete(Long id);
 }

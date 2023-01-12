@@ -23,7 +23,7 @@ public class PhotoLivreServiceImpl implements PhotoLivreService {
 	}
 
 	@Override
-	public PhotoLivre get(Integer id) throws Exception {
+	public PhotoLivre get(Long id) throws Exception {
 		return photoLivreRepository.findById(id).orElseThrow(() -> new Exception("Photo livre introuvable"));
 	}
 
@@ -33,7 +33,7 @@ public class PhotoLivreServiceImpl implements PhotoLivreService {
 	}
 
 	@Override
-	public void delete(Integer id) {
+	public void delete(Long id) {
 		photoLivreRepository.deleteById(id);
 	}
 

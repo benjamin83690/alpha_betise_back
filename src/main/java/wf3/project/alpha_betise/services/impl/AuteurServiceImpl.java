@@ -23,7 +23,7 @@ public class AuteurServiceImpl implements AuteurService {
 	}
 
 	@Override
-	public Auteur get(Integer id) throws Exception {
+	public Auteur get(Long id) throws Exception {
 		return auteurRepository.findById(id).orElseThrow(() -> new Exception("auteur introuvable"));
 	}
 
@@ -33,7 +33,7 @@ public class AuteurServiceImpl implements AuteurService {
 	}
 
 	@Override
-	public void delete(Integer id) {
+	public void delete(Long id) {
 		auteurRepository.deleteById(id);
 	}
 

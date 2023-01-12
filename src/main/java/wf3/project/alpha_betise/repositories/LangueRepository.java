@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import wf3.project.alpha_betise.entities.Langue;
 
 @Repository
-public interface LangueRepository extends JpaRepository<Langue, Integer> {
+public interface LangueRepository extends JpaRepository<Langue, Long> {
 
 }

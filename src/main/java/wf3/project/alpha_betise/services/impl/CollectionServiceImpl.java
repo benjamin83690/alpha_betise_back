@@ -22,7 +22,7 @@ public class CollectionServiceImpl implements CollectionService {
     }
 
     @Override
-    public CollectionLivre get(Integer id) throws Exception {
+	public CollectionLivre get(Long id) throws Exception {
         return collectionRepository.findById(id).orElseThrow(() -> new Exception("Collection introuvable"));
     }
 
@@ -32,7 +32,7 @@ public class CollectionServiceImpl implements CollectionService {
     }
 
     @Override
-    public void delete(Integer id) {
+	public void delete(Long id) {
     	collectionRepository.deleteById(id);
     }
 }

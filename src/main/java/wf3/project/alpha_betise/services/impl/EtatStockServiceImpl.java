@@ -23,7 +23,7 @@ public class EtatStockServiceImpl implements EtatStockService {
 	}
 
 	@Override
-	public EtatStock get(Integer id) throws Exception {
+	public EtatStock get(Long id) throws Exception {
 		return etatStockRepository.findById(id).orElseThrow(() -> new Exception("Element introuvable"));
 	}
 
@@ -33,7 +33,7 @@ public class EtatStockServiceImpl implements EtatStockService {
 	}
 
 	@Override
-	public void delete(Integer id) {
+	public void delete(Long id) {
 		etatStockRepository.deleteById(id);
 	}
 

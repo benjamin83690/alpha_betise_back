@@ -8,9 +8,9 @@ public interface LivreService {
 
     public List<Livre> getAll();
 
-    public Livre get(Integer id) throws Exception;
+    public Livre get(Long id) throws Exception;
 
     public Livre post(Livre livre);
 
-    public void delete(Integer id);
+    public void delete(Long id);
 }

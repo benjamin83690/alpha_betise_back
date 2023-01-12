@@ -23,7 +23,7 @@ public class AuthService {
 	public AuthResponse register(RegisterRequest request) {
 		var utilisateur = Utilisateur.builder().prenom(request.getPrenom()).nom(request.getNom()).age(request.getAge())
 				.email(request.getEmail()).motDePasse(passwordEncoder.encode(request.getMotDePasse()))
-				.role(new Role(1, "USER"))
+				.role(new Role(1L, "USER"))
 				.build();
 		utilisateurRepository.save(utilisateur);
 		var jwtToken = jwtService.generateToken(utilisateur);

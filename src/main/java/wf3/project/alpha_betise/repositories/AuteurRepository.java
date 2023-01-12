@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import wf3.project.alpha_betise.entities.Auteur;
 
 @Repository
-public interface AuteurRepository extends JpaRepository<Auteur, Integer> {
+public interface AuteurRepository extends JpaRepository<Auteur, Long> {
 
 }

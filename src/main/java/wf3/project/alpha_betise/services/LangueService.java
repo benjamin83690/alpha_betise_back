@@ -9,9 +9,9 @@ public interface LangueService {
 
 	public List<Langue> getAll();
 
-	public Langue get(Integer id) throws Exception;
+	public Langue get(Long id) throws Exception;
 
 	public Langue post(Langue langue);
 
-	public void delete(Integer id);
+	public void delete(Long id);
 }

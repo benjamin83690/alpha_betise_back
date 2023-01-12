@@ -22,7 +22,7 @@ public class CommentaireUtilisateurImpl implements CommentaireUtilisateurService
 	}
 
 	@Override
-	public CommentaireUtilisateur get(Integer id) throws Exception {
+	public CommentaireUtilisateur get(Long id) throws Exception {
 		return commentaireUtilisateurRepository.findById(id)
 				.orElseThrow(() -> new Exception("Commentaire introuvable"));
 	}
@@ -33,7 +33,7 @@ public class CommentaireUtilisateurImpl implements CommentaireUtilisateurService
 	}
 
 	@Override
-	public void delete(Integer id) {
+	public void delete(Long id) {
 		commentaireUtilisateurRepository.deleteById(id);
 	}
 

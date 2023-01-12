@@ -5,11 +5,14 @@ import java.util.List;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
@@ -27,11 +30,12 @@ import lombok.NonNull;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "livres")
+@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "isbn", scope = Livre.class)
 public class Livre {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer isbn;
+	private Long isbn;
 
     @NonNull
     private String titre;
@@ -40,25 +44,22 @@ public class Livre {
     private Float prix;
 
     @NonNull
+	@Column(columnDefinition = "text")
     private String resume;
 
-    @Column(name = "libraire_com")
     private String libraireCom;
 
     @NonNull
-    @Column(name = "nb_pages")
     private Integer nbPages;
 
     @NonNull
     @DateTimeFormat(pattern = "dd-MM-yyyy")
-    @Column(name = "date_publication")
     private LocalDate datePublication;
 
     @NonNull
-    private Float poids;
+	private Float poids;
 
     @NonNull
-    @Column(name = "nb_exemplaires")
     private Integer nbExemplaires;
 
     @NonNull
@@ -70,40 +71,40 @@ public class Livre {
     @NonNull
     private Float epaisseur;
 
-    @ManyToOne
+	@ManyToOne
     @JoinColumn(name = "categorie_livre_id")
+//	@JsonIgnore
     private CategorieLivre categorieLivre;
 
-    @ManyToOne
+	@ManyToOne
     @JoinColumn(name = "collection_id")
     private CollectionLivre collectionLivre;
 
-    @ManyToOne
+	@ManyToOne
     @JoinColumn(name = "editeur_id")
     private Editeur editeur;
 
-    @OneToMany(mappedBy = "livre", cascade = CascadeType.REMOVE)
+	@OneToMany(mappedBy = "livre", cascade = CascadeType.REMOVE)
     private List<PhotoLivre> photosLivre;
 
-    @ManyToOne
+	@ManyToOne
     @JoinColumn(name = "langue_id")
     private Langue langue;
 
-    @ManyToOne
+	@ManyToOne
     @JoinColumn(name = "etat_stock_id")
     private EtatStock etatStock;
 
-    @OneToMany(mappedBy = "livre", cascade = CascadeType.REMOVE)
+	@OneToMany(mappedBy = "livre", cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
     private List<CommentaireUtilisateur> commentairesUtilsateur;
 
-    @ManyToMany
+	@ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
             name = "auteurs_livres",
-            joinColumns = @JoinColumn(name = "auteur_id"),
-            inverseJoinColumns = @JoinColumn(name = "livre_isbn"))
+			joinColumns = @JoinColumn(name = "livre_isbn"), inverseJoinColumns = @JoinColumn(name = "auteur_id"))
     private List<Auteur> auteurs;
 
-    @OneToMany(mappedBy = "livre")
+	@OneToMany(mappedBy = "livre", fetch = FetchType.LAZY)
     private List<DetailCommande> detailsCommande;
 
 }

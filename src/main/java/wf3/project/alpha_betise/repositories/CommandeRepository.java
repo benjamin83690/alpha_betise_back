@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import wf3.project.alpha_betise.entities.Commande;
 
 @Repository
-public interface CommandeRepository extends JpaRepository<Commande, Integer> {
+public interface CommandeRepository extends JpaRepository<Commande, Long> {
 
 }

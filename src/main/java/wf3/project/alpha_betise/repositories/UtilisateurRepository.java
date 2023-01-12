@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import wf3.project.alpha_betise.entities.Utilisateur;
 
 @Repository
-public interface UtilisateurRepository extends JpaRepository<Utilisateur, Integer> {
+public interface UtilisateurRepository extends JpaRepository<Utilisateur, Long> {
 
 	Optional<Utilisateur> findByEmail(String email);
 
