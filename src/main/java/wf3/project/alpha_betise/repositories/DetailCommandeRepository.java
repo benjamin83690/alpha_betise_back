@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import wf3.project.alpha_betise.entities.DetailCommande;
 
 @Repository
-public interface DetailCommandeRepository extends JpaRepository<DetailCommande, Integer> {
+public interface DetailCommandeRepository extends JpaRepository<DetailCommande, Long> {
 
 }

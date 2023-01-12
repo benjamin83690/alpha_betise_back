@@ -1,5 +1,9 @@
 package wf3.project.alpha_betise.entities;
 
+import java.io.Serializable;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
@@ -16,7 +20,8 @@ import lombok.NonNull;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "details_commande")
-public class DetailCommande {
+@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
+public class DetailCommande implements Serializable {
 
 	@EmbeddedId
 	private DetailCommandePK id;

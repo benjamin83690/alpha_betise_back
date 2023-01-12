@@ -23,7 +23,7 @@ public class DetailCommandeServiceImpl implements DetailCommandeService {
 	}
 
 	@Override
-	public DetailCommande get(Integer id) throws Exception {
+	public DetailCommande get(Long id) throws Exception {
 		return detailCommandeRepository.findById(id).orElseThrow(() -> new Exception("commande introuvable"));
 	}
 
@@ -33,7 +33,7 @@ public class DetailCommandeServiceImpl implements DetailCommandeService {
 	}
 
 	@Override
-	public void delete(Integer id) {
+	public void delete(Long id) {
 		detailCommandeRepository.deleteById(id);
 	}
 

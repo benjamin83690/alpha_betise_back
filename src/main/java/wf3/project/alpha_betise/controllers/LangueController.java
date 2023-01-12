@@ -27,7 +27,7 @@ public class LangueController {
 	}
 
 	@GetMapping("/{id}")
-	public Langue get(@PathVariable("id") Integer id) throws Exception {
+	public Langue get(@PathVariable("id") Long id) throws Exception {
 		return langueService.get(id);
 	}
 	
@@ -37,7 +37,7 @@ public class LangueController {
 	}
 	
 	@DeleteMapping("/{id}")
-	public void delete(@PathVariable("id") Integer id) {
+	public void delete(@PathVariable("id") Long id) {
 		langueService.delete(id);
 	}
 }

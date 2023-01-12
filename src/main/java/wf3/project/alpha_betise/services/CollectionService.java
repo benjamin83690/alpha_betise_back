@@ -8,9 +8,9 @@ public interface CollectionService {
 	
 	public List<CollectionLivre> getAll();
 
-    public CollectionLivre get(Integer id) throws Exception;
+	public CollectionLivre get(Long id) throws Exception;
 
     public CollectionLivre post(CollectionLivre collection);
 
-    public void delete(Integer id);
+	public void delete(Long id);
 }

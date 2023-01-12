@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import wf3.project.alpha_betise.entities.EtatStock;
 
 @Repository
-public interface EtatStockRepository extends JpaRepository<EtatStock, Integer> {
+public interface EtatStockRepository extends JpaRepository<EtatStock, Long> {
 
 }

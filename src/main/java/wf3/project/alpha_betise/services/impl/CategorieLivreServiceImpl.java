@@ -1,14 +1,14 @@
 package wf3.project.alpha_betise.services.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
 import wf3.project.alpha_betise.entities.CategorieLivre;
 import wf3.project.alpha_betise.repositories.CategorieLivreRepository;
 import wf3.project.alpha_betise.services.CategorieLivreService;
-
-
-import java.util.List;
 
 @Service
 @Transactional
@@ -23,7 +23,7 @@ public class CategorieLivreServiceImpl implements CategorieLivreService {
     }
 
     @Override
-    public CategorieLivre get(Integer id) throws Exception {
+	public CategorieLivre get(Long id) throws Exception {
         return categorieLivreRepository.findById(id).orElseThrow(() -> new Exception("Catégorie livre introuvable"));
     }
 
@@ -33,7 +33,7 @@ public class CategorieLivreServiceImpl implements CategorieLivreService {
     }
 
     @Override
-    public void delete(Integer id) {
+	public void delete(Long id) {
         categorieLivreRepository.deleteById(id);
     }
 }

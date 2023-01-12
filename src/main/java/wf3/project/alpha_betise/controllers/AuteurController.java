@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -26,17 +27,17 @@ public class AuteurController {
 	}
 
 	@GetMapping("/{id}")
-	public Auteur get(@PathVariable("id") Integer id) throws Exception {
+	public Auteur get(@PathVariable("id") Long id) throws Exception {
 		return auteurService.get(id);
 	}
 
 	@PostMapping
-	public Auteur post(Auteur auteur) {
+	public Auteur post(@RequestBody Auteur auteur) {
 		return auteurService.post(auteur);
 	}
 
 	@DeleteMapping("/{id}")
-	public void delete(@PathVariable("id") Integer id) {
+	public void delete(@PathVariable("id") Long id) {
 		auteurService.delete(id);
 	}
 }

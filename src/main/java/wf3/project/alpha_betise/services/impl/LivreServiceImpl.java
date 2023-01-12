@@ -22,7 +22,7 @@ public class LivreServiceImpl implements LivreService {
     }
 
     @Override
-    public Livre get(Integer id) throws Exception {
+    public Livre get(Long id) throws Exception {
         return livreRepository.findById(id).orElseThrow(() -> new Exception("Livre introuvable"));
     }
 
@@ -32,7 +32,7 @@ public class LivreServiceImpl implements LivreService {
     }
 
     @Override
-    public void delete(Integer id) {
+    public void delete(Long id) {
         livreRepository.deleteById(id);
     }
 }

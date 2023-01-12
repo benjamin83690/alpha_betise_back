@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import wf3.project.alpha_betise.entities.CommentaireUtilisateur;
 
 @Repository
-public interface CommentaireUtilisateurRepository extends JpaRepository<CommentaireUtilisateur, Integer> {
+public interface CommentaireUtilisateurRepository extends JpaRepository<CommentaireUtilisateur, Long> {
 
 }

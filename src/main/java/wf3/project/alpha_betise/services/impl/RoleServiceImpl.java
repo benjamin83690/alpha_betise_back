@@ -23,7 +23,7 @@ public class RoleServiceImpl implements RoleService {
 	}
 
 	@Override
-	public Role get(Integer id) throws Exception {
+	public Role get(Long id) throws Exception {
 		return roleRepository.findById(id).orElseThrow(() -> new Exception("Role introuvable"));
 	}
 
@@ -33,7 +33,7 @@ public class RoleServiceImpl implements RoleService {
 	}
 
 	@Override
-	public void delete(Integer id) {
+	public void delete(Long id) {
 		roleRepository.deleteById(id);
 	}
 

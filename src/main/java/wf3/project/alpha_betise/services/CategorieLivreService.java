@@ -1,16 +1,16 @@
 package wf3.project.alpha_betise.services;
 
-import wf3.project.alpha_betise.entities.CategorieLivre;
-
 import java.util.List;
+
+import wf3.project.alpha_betise.entities.CategorieLivre;
 
 public interface CategorieLivreService {
 
     public List<CategorieLivre> getAll();
 
-    public CategorieLivre get(Integer id) throws Exception;
+	public CategorieLivre get(Long id) throws Exception;
 
     public CategorieLivre post(CategorieLivre categorieLivre);
 
-    public void delete(Integer id);
+	public void delete(Long id);
 }

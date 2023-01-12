@@ -23,7 +23,7 @@ public class CommandeServiceImpl implements CommandeService {
 	}
 
 	@Override
-	public Commande get(Integer id) throws Exception {
+	public Commande get(Long id) throws Exception {
 		return commandeRepository.findById(id).orElseThrow(() -> new Exception("Commande Introuvable"));
 	}
 
@@ -33,7 +33,7 @@ public class CommandeServiceImpl implements CommandeService {
 	}
 
 	@Override
-	public void delete(Integer id) {
+	public void delete(Long id) {
 		commandeRepository.deleteById(id);
 	}
 

@@ -23,7 +23,7 @@ public class EtatCommandeServiceImpl implements EtatCommandeService {
 	}
 
 	@Override
-	public EtatCommande get(Integer id) throws Exception {
+	public EtatCommande get(Long id) throws Exception {
 		return etatCommandeRepository.findById(id).orElseThrow(() -> new Exception("Etat de la commande introuvable."));
 	}
 
@@ -33,7 +33,7 @@ public class EtatCommandeServiceImpl implements EtatCommandeService {
 	}
 
 	@Override
-	public void delete(Integer id) {
+	public void delete(Long id) {
 		etatCommandeRepository.deleteById(id);
 	}
 

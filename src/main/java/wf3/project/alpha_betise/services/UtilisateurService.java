@@ -8,9 +8,9 @@ public interface UtilisateurService {
 
 	public List<Utilisateur> getAll();
 
-	public Utilisateur get(Integer id) throws Exception;
+	public Utilisateur get(Long id) throws Exception;
 
 	public Utilisateur post(Utilisateur utilisateur);
 
-	public void delete(Integer id);
+	public void delete(Long id);
 }

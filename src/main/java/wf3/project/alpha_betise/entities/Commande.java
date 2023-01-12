@@ -5,8 +5,9 @@ import java.util.List;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -30,15 +31,13 @@ public class Commande {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
+	private Long id;
 
 	@NonNull
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
-	@Column(name = "date_commande")
 	private LocalDate dateCommande;
 
 	@NonNull
-	@Column(name = "prix_total")
 	private Integer prixTotal;
 
 	@NonNull
@@ -48,11 +47,9 @@ public class Commande {
 	private String ville;
 
 	@NonNull
-	@JoinColumn(name = "code_postal")
 	private Integer codePostal;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "utilisateur_id")
 	private Utilisateur utilisateurId;
 
 	@OneToMany(mappedBy = "commande", cascade = CascadeType.REMOVE)
@@ -60,5 +57,6 @@ public class Commande {
 
 	@ManyToOne
 	@JoinColumn(name = "etat_commande_id")
+	@JsonIgnore
 	private EtatCommande etatCommande;
 }

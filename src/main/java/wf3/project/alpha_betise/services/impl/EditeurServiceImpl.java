@@ -21,7 +21,7 @@ public class EditeurServiceImpl implements EditeurService {
     }
 
     @Override
-    public Editeur get(Integer id) throws Exception {
+	public Editeur get(Long id) throws Exception {
         return editeurRepository.findById(id).orElseThrow(() -> new Exception("Editeur introuvable"));
     }
 
@@ -31,7 +31,7 @@ public class EditeurServiceImpl implements EditeurService {
     }
 
     @Override
-    public void delete(Integer id) {
+	public void delete(Long id) {
         editeurRepository.deleteById(id);
     }
 }

@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import wf3.project.alpha_betise.entities.CollectionLivre;
 
 @Repository
-public interface CollectionRepository extends JpaRepository<CollectionLivre, Integer>{
+public interface CollectionRepository extends JpaRepository<CollectionLivre, Long> {
 	
 }

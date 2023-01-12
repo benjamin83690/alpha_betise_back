@@ -1,12 +1,9 @@
 package wf3.project.alpha_betise.entities;
 
-import java.util.List;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -27,6 +24,4 @@ public class Langue {
 	@NonNull
 	private String langue;
 
-	@OneToMany(mappedBy = "langue")
-	private List<Livre> livres;
 }

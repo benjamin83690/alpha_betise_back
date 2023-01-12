@@ -2,7 +2,10 @@ package wf3.project.alpha_betise.entities;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -18,15 +21,16 @@ import lombok.NonNull;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "etats_stocks")
+@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
 public class EtatStock {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
+	private Long id;
 
 	@NonNull
 	private String etat;
 
-	@OneToMany(mappedBy = "etatStock")
+	@OneToMany(mappedBy = "etatStock", fetch = FetchType.LAZY)
 	private List<Livre> livres;
 }

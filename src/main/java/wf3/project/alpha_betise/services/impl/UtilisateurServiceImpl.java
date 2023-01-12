@@ -23,7 +23,7 @@ public class UtilisateurServiceImpl implements UtilisateurService {
 	}
 
 	@Override
-	public Utilisateur get(Integer id) throws Exception {
+	public Utilisateur get(Long id) throws Exception {
 		return utilisateurRepository.findById(id).orElseThrow(() -> new Exception("Utilisateur introuvable"));
 	}
 
@@ -33,7 +33,7 @@ public class UtilisateurServiceImpl implements UtilisateurService {
 	}
 
 	@Override
-	public void delete(Integer id) {
+	public void delete(Long id) {
 		utilisateurRepository.deleteById(id);
 	}
 

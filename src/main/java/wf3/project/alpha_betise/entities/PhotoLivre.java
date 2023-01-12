@@ -1,6 +1,5 @@
 package wf3.project.alpha_betise.entities;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -21,9 +20,8 @@ public class PhotoLivre {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
+	private Long id;
 
-	@Column(name = "path_url")
 	private String pathUrl;
 
 	@ManyToOne

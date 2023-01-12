@@ -15,8 +15,8 @@ import lombok.NoArgsConstructor;
 public class DetailCommandePK implements Serializable {
 
     @Column(name = "commande_id")
-    private Integer commandeId;
+	private Long commandeId;
 
     @Column(name = "livre_isbn")
-    private Integer livreIsbn;
+	private Long livreIsbn;
 }
