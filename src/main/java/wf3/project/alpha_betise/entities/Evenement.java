@@ -1,6 +1,7 @@
 package wf3.project.alpha_betise.entities;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
 
 import org.springframework.format.annotation.DateTimeFormat;
@@ -41,11 +42,19 @@ public class Evenement {
 
 	private Float prix;
 
-	private String lieu;
+	private String rue;
+
+	private String ville;
+
+	private Integer codePostal;
 
 	@NonNull
-	@DateTimeFormat(pattern = "dd/MM/yyyy")
+	@DateTimeFormat(pattern = "dd-MM-yyyy")
 	private LocalDate date;
+
+	@NonNull
+	@DateTimeFormat(pattern = "HH:mm")
+	private LocalTime heureDuRdv;
 
 	@ManyToMany(mappedBy = "evenementId")
 	private List<Utilisateur> utilisateurs;
