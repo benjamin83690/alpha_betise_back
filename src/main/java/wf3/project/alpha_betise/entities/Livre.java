@@ -31,7 +31,6 @@ public class Livre {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @NonNull
     private Integer isbn;
 
     @NonNull
