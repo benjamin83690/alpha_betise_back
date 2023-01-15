@@ -30,7 +30,6 @@ public class Commande {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@NonNull
 	private Integer id;
 
 	@NonNull

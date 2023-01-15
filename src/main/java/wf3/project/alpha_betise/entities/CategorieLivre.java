@@ -1,5 +1,7 @@
 package wf3.project.alpha_betise.entities;
 
+import java.util.List;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -10,7 +12,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
-import java.util.List;
 
 
 @Entity
@@ -22,7 +23,6 @@ public class CategorieLivre {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @NonNull
     private Integer id;
 
     @NonNull

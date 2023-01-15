@@ -1,5 +1,7 @@
 package wf3.project.alpha_betise.entities;
 
+import java.util.List;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -11,8 +13,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
 
-import java.util.List;
-
 @Entity
 @Data
 @NoArgsConstructor
@@ -21,7 +21,6 @@ import java.util.List;
 public class EtatStock {
 
 	@Id
-	@NonNull
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
