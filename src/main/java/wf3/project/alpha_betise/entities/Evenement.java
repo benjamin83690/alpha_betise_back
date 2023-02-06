@@ -49,7 +49,9 @@ public class Evenement {
 
 	private String ville;
 
-	private Integer codePostal;
+	private String codePostal;
+
+	private String description;
 
 	@NonNull
 	@DateTimeFormat(pattern = "dd-MM-yyyy")
