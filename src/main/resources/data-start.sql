@@ -1,56 +1,49 @@
 ---------------------------------------------------------------------
-------------------------------- ROLE --------------------------------
----------------------------------------------------------------------
-INSERT INTO roles (role) VALUES	('USER'),
-								('ADMIN');
-
----------------------------------------------------------------------
 ---------------------------- ETAT STOCK -----------------------------
 ---------------------------------------------------------------------
-INSERT INTO etats_stocks (etat) VALUES ('en stock'),
-									 ('en commande'),
-									 ('épuisé');
+INSERT INTO etats_stocks (id, etat) VALUES (1, 'en stock'),
+									 (2, 'en commande'),
+									 (3, 'épuisé');
 
 ---------------------------------------------------------------------
 ----------------------------- CATEGORIE -----------------------------
 ---------------------------------------------------------------------
-INSERT INTO categories_livre (libelle) VALUES ('bébés 1-3 ans'),
-											 ('enfants 3+'),
-											 ('ados'),
-											 ('adulte');
+INSERT INTO categories_livre (id, libelle) VALUES (1, 'bébés 1-3 ans'),
+											 (2, 'enfants 3+'),
+											 (3, 'ados'),
+											 (4, 'adulte');
 
 ---------------------------------------------------------------------
 ------------------------------ LANGUE -------------------------------
 ---------------------------------------------------------------------
-INSERT INTO langues (langue) VALUES	('Français'),
-									('Anglais');
+INSERT INTO langues (id, langue) VALUES	(1, 'Français'),
+									(2, 'Anglais');
 
 ---------------------------------------------------------------------
 ------------------------------ ETAT COMMANDE ------------------------
 ---------------------------------------------------------------------
-INSERT INTO etats_commandes (etat) VALUES	('en cours de préparation'),
-										('en livraison'),
-										('livré');
+INSERT INTO etats_commandes (id, etat) VALUES	(1, 'en cours de préparation'),
+										(2, 'en livraison'),
+										(3, 'livré');
 
 ---------------------------------------------------------------------
 ------------------------------ EDITEUR ------------------------------
 ---------------------------------------------------------------------					
-INSERT INTO editeurs (nom) VALUES	('Hachette'), ('Gallimard'), ('Flammarion'), ('Atlas'), ('Baudelaire');							
+INSERT INTO editeurs (id, nom) VALUES	(1, 'Hachette'), (2, 'Gallimard'), (3, 'Flammarion'), (4, 'Atlas'), (5, 'Baudelaire');							
 ---------------------------------------------------------------------
 ------------------------------ COLLECTION ---------------------------
 ---------------------------------------------------------------------										
-INSERT INTO collections (nom) VALUES	('Hachette'), ('Gallimard'), ('Flammarion'), ('Atlas');
+INSERT INTO collections (id, nom) VALUES	(1, 'Hachette'), (2, 'Gallimard'), (3, 'Flammarion'), (4, 'Atlas');
 						
 ---------------------------------------------------------------------
 ------------------------------ AUTEUR -------------------------------
 ---------------------------------------------------------------------
-INSERT INTO auteurs (nom) VALUES 	('PEREZ'), ('LACOMBE'), ('LANG'), ('JOUANNIGOT LOIC'),
-									('JALBERT PHILIPPE'), ('HIGGINS RYAN T.'), ('SECHAN'), 
-									('JOURDY'), ('NOB'), ('DUNAND-PALLAZ'), ('JOLIBOIS'), 
-									('HEINRICH'), ('CATHON'), ('BERTRAND'), ('BONNIOL'),
-									('PEDROSA'), ('ROCHETTE'), ('BOCQUET'), ('REY'), ('SFAR JOANN'),
-									('DEVENEY'), ('TAMARIT'), ('LAMBDA SOPHIE'), ('CY'),
-									('GAIMAN'), ('NEYRET'), ('ROWLING J.K.'), ('WYNNE JONES DIANA');
+INSERT INTO auteurs (auteur_id, nom) VALUES 	(1, 'PEREZ'), (2, 'LACOMBE'), (3, 'LANG'), (4, 'JOUANNIGOT LOIC'),
+									(5, 'JALBERT PHILIPPE'), (6, 'HIGGINS RYAN T.'), (7, 'SECHAN'), 
+									(8, 'JOURDY'), (9, 'NOB'), (10, 'DUNAND-PALLAZ'), (11, 'JOLIBOIS'), 
+									(12, 'HEINRICH'), (13, 'CATHON'), (14, 'BERTRAND'), (15, 'BONNIOL'),
+									(16, 'PEDROSA'), (17, 'ROCHETTE'), (18, 'BOCQUET'), (19, 'REY'), (20, 'SFAR JOANN'),
+									(21, 'DEVENEY'), (22, 'TAMARIT'), (23, 'LAMBDA SOPHIE'), (24, 'CY');
 										
 ---------------------------------------------------------------------
 ------------------------------ LIVRE --------------------------------
@@ -69,7 +62,7 @@ INSERT INTO auteurs_livres (auteur_id, livre_isbn) VALUES (1,9782226453587);
 ---------------------------------------------------------------------
 ------------------------------ PHOTO LVRE ---------------------------
 ---------------------------------------------------------------------
-INSERT INTO photos_livre (path_url, livre_isbn) VALUES ('https://www.lalibrairie.com/cache/img/livres/112/9791037507112-xs.webp', 9782226453587);
+INSERT INTO photos_livre (id, path_url, livre_isbn) VALUES (1, 'https://www.lalibrairie.com/cache/img/livres/112/9791037507112-xs.webp', 9782226453587);
 
 ---------------------------------------------------------------------
 ------------------------------ EVENEMENT ----------------------------

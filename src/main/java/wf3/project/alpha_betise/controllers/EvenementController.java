@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import wf3.project.alpha_betise.dtos.EvenementDto;
 import wf3.project.alpha_betise.entities.Evenement;
 import wf3.project.alpha_betise.services.EvenementService;
 
@@ -22,7 +23,7 @@ public class EvenementController {
 	private EvenementService evenementService;
 
 	@GetMapping("/all")
-	public List<Evenement> getAll() {
+	public List<EvenementDto> getAll() {
 		return evenementService.getAll();
 	}
 
