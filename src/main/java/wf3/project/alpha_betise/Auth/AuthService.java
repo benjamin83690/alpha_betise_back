@@ -21,9 +21,16 @@ public class AuthService {
 	private final AuthenticationManager authenticationManager;
 
 	public AuthResponse register(RegisterRequest request) {
+		boolean userExists = utilisateurRepository.findByEmail(request.getEmail()).isPresent();
+
+		if (userExists) {
+			// TODO if email not confirmed send confirmation email.
+			throw new IllegalStateException("Cet utilisateur existe deja.");
+		}
+
 		var utilisateur = Utilisateur.builder().prenom(request.getPrenom()).nom(request.getNom())
 				.email(request.getEmail()).motDePasse(passwordEncoder.encode(request.getMotDePasse()))
-				.role(Role.USER)
+				.role(Role.USER).activer(false)
 				.build();
 		utilisateurRepository.save(utilisateur);
 		var jwtToken = jwtService.generateToken(utilisateur);

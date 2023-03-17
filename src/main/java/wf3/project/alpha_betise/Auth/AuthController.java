@@ -24,4 +24,5 @@ public class AuthController {
 	public ResponseEntity<AuthResponse> authenticate(@RequestBody AuthRequest request) {
 		return ResponseEntity.ok(service.authenticate(request));
 	}
+
 }
