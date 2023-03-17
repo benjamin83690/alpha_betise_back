@@ -21,9 +21,9 @@ public class AuthService {
 	private final AuthenticationManager authenticationManager;
 
 	public AuthResponse register(RegisterRequest request) {
-		var utilisateur = Utilisateur.builder().prenom(request.getPrenom()).nom(request.getNom()).age(request.getAge())
+		var utilisateur = Utilisateur.builder().prenom(request.getPrenom()).nom(request.getNom())
 				.email(request.getEmail()).motDePasse(passwordEncoder.encode(request.getMotDePasse()))
-				.role(new Role(1L, "USER"))
+				.role(Role.USER)
 				.build();
 		utilisateurRepository.save(utilisateur);
 		var jwtToken = jwtService.generateToken(utilisateur);

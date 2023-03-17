@@ -10,13 +10,14 @@ import org.springframework.security.core.userdetails.UserDetails;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Email;
@@ -53,13 +54,9 @@ public class Utilisateur implements UserDetails {
 	@NonNull
 	private String motDePasse;
 
-	@NonNull
-	private Short age;
-
 	private String photo;
 	
-	@ManyToOne(optional = false)
-	@JoinColumn(name = "role_id")
+	@Enumerated(EnumType.STRING)
 	private Role role;
 
 	@ManyToMany
@@ -74,7 +71,7 @@ public class Utilisateur implements UserDetails {
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-		return List.of(new SimpleGrantedAuthority(role.getRole()));
+		return List.of(new SimpleGrantedAuthority(role.name()));
 	}
 
 	@Override

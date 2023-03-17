@@ -6,7 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import wf3.project.alpha_betise.dtos.EvenementDto;
 import wf3.project.alpha_betise.entities.Evenement;
+import wf3.project.alpha_betise.mappers.EvenementMapper;
 import wf3.project.alpha_betise.repositories.EvenementRepository;
 import wf3.project.alpha_betise.services.EvenementService;
 
@@ -17,9 +19,12 @@ public class EvenementServiceImpl implements EvenementService {
 	@Autowired
 	private EvenementRepository evenementRepository;
 
+	@Autowired
+	private EvenementMapper evenementMapper;
+
 	@Override
-	public List<Evenement> getAll() {
-		return evenementRepository.findAll();
+	public List<EvenementDto> getAll() {
+		return evenementMapper.toDtos(evenementRepository.findAll());
 	}
 
 	@Override
