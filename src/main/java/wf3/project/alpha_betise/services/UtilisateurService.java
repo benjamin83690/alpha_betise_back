@@ -13,4 +13,6 @@ public interface UtilisateurService {
 	public Utilisateur post(Utilisateur utilisateur);
 
 	public void delete(Long id);
+
+	public String signUpUser(Utilisateur utilisateur);
 }
