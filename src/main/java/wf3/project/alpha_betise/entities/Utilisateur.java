@@ -56,6 +56,8 @@ public class Utilisateur implements UserDetails {
 
 	private String photo;
 	
+	private Boolean activer;
+
 	@Enumerated(EnumType.STRING)
 	private Role role;
 
@@ -101,6 +103,6 @@ public class Utilisateur implements UserDetails {
 
 	@Override
 	public boolean isEnabled() {
-		return true;
+		return false;
 	}
 }
