@@ -1,12 +1,18 @@
 package wf3.project.alpha_betise.Auth;
 
+import java.time.LocalDateTime;
+
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.servlet.view.RedirectView;
 
 import lombok.RequiredArgsConstructor;
 import wf3.project.alpha_betise.Auth.email.EmailSender;
+import wf3.project.alpha_betise.Auth.token.ConfirmationToken;
+import wf3.project.alpha_betise.Auth.token.ConfirmationTokenService;
 import wf3.project.alpha_betise.config.JwtService;
 import wf3.project.alpha_betise.entities.Role;
 import wf3.project.alpha_betise.entities.Utilisateur;
@@ -23,33 +29,59 @@ public class AuthService {
 	private final AuthenticationManager authenticationManager;
 	private final UtilisateurService utilisateurService;
 	private final EmailSender emailSender;
+	private final ConfirmationTokenService confirmationTokenService;
 
 	public AuthResponse register(RegisterRequest request) {
 		boolean userExists = utilisateurRepository.findByEmail(request.getEmail()).isPresent();
 
 		if (userExists) {
-			// TODO if email not confirmed send confirmation email.
 			throw new IllegalStateException("Cet utilisateur existe deja.");
 		}
 
 		var utilisateur = Utilisateur.builder().prenom(request.getPrenom()).nom(request.getNom())
 				.email(request.getEmail()).motDePasse(passwordEncoder.encode(request.getMotDePasse()))
-				.role(Role.USER).activer(false)
+				.role(Role.USER)
 				.build();
 		utilisateurRepository.save(utilisateur);
 		var token = utilisateurService.signUpUser(utilisateur);
-		String link = "http://localhost:8080/api/v1/registration/confirm?token=" + token;
+		String link = "http://localhost:8080/api/auth/confirm?token=" + token;
 		emailSender.send(request.getEmail(), buildEmail(request.getPrenom(), link));
 		var jwtToken = jwtService.generateToken(utilisateur);
 		return AuthResponse.builder().token(jwtToken).build();
 	}
 
-	public AuthResponse authenticate(AuthRequest request) {
+	public AuthResponse authenticate(AuthRequest request) throws Exception {
 		authenticationManager
 				.authenticate(new UsernamePasswordAuthenticationToken(request.getEmail(), request.getMotDePasse()));
 		var utilisateur = utilisateurRepository.findByEmail(request.getEmail()).orElseThrow();
-		var jwtToken = jwtService.generateToken(utilisateur);
-		return AuthResponse.builder().token(jwtToken).build();
+		if (utilisateur.getActiver()) {
+			var jwtToken = jwtService.generateToken(utilisateur);
+			return AuthResponse.builder().token(jwtToken).build();
+		} else {
+			throw new Exception("Votre compte n'a pas encore ete valider, veuillez consulter vos emails");
+		}
+	}
+
+	@Transactional
+	public RedirectView confirmToken(String token) {
+		ConfirmationToken confirmationToken = confirmationTokenService.getToken(token)
+				.orElseThrow(() -> new IllegalStateException("token not found"));
+
+		if (confirmationToken.getConfirmedAt() != null) {
+			throw new IllegalStateException("email already confirmed");
+		}
+
+		LocalDateTime expiredAt = confirmationToken.getExpiresAt();
+
+		if (expiredAt.isBefore(LocalDateTime.now())) {
+			throw new IllegalStateException("token expired");
+		}
+
+		confirmationTokenService.setConfirmedAt(token);
+		utilisateurService.enableAppUser(confirmationToken.getUtilisateur().getEmail());
+		RedirectView redirectView = new RedirectView();
+		redirectView.setUrl("http://localhost:4200/connexion");
+		return redirectView;
 	}
 
 	private String buildEmail(String name, String link) {
@@ -85,7 +117,7 @@ public class AuthService {
 				+ name
 				+ ",</p><p style=\"Margin:0 0 20px 0;font-size:19px;line-height:25px;color:#0b0c0c\"> L'alpha betise te remercie et te souhaite la bienvenue. Pour valider ton compte tu peux cliquer ici: </p><blockquote style=\"Margin:0 0 20px 0;border-left:10px solid #b1b4b6;padding:15px 0 0.1px 15px;font-size:19px;line-height:25px\"><p style=\"Margin:0 0 20px 0;font-size:19px;line-height:25px;color:#0b0c0c\"> <a href=\""
 				+ link
-				+ "\">Activer mon compte</a> </p></blockquote>\n Le lien expire dans 15 minutes. <p>See you soon</p>"
+				+ "\">Activer mon compte</a> </p></blockquote>\n Le lien expire dans 15 minutes. <p>A bientot chez l'Alpha Betise</p>"
 				+ "        \n" + "      </td>\n" + "      <td width=\"10\" valign=\"middle\"><br></td>\n"
 				+ "    </tr>\n" + "    <tr>\n" + "      <td height=\"30\"><br></td>\n" + "    </tr>\n"
 				+ "  </tbody></table><div class=\"yj6qo\"></div><div class=\"adL\">\n" + "\n" + "</div></div>";
