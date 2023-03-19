@@ -30,8 +30,8 @@ public class UtilisateurServiceImpl implements UtilisateurService {
 	}
 
 	@Override
-	public Utilisateur get(Long id) throws Exception {
-		return utilisateurRepository.findById(id).orElseThrow(() -> new Exception("Utilisateur introuvable"));
+	public Utilisateur get(String email) throws Exception {
+		return utilisateurRepository.findByEmail(email).orElseThrow(() -> new Exception("Utilisateur introuvable"));
 	}
 
 	@Override
@@ -54,6 +54,11 @@ public class UtilisateurServiceImpl implements UtilisateurService {
 		confirmationTokenService.saveConfirmationToken(confirmationToken);
 
 		return token;
+	}
+
+	@Override
+	public int enableAppUser(String email) {
+		return utilisateurRepository.enableAppUser(email);
 	}
 
 }

@@ -26,9 +26,9 @@ public class UtilisateurController {
 		return utilisateurService.getAll();
 	}
 
-	@GetMapping("/{id}")
-	public Utilisateur get(@PathVariable("id") Long id) throws Exception {
-		return utilisateurService.get(id);
+	@GetMapping("/{email}")
+	public Utilisateur get(@PathVariable("email") String email) throws Exception {
+		return utilisateurService.get(email);
 	}
 
 	@PostMapping

@@ -8,11 +8,13 @@ public interface UtilisateurService {
 
 	public List<Utilisateur> getAll();
 
-	public Utilisateur get(Long id) throws Exception;
+	public Utilisateur get(String email) throws Exception;
 
 	public Utilisateur post(Utilisateur utilisateur);
 
 	public void delete(Long id);
 
 	public String signUpUser(Utilisateur utilisateur);
+
+	public int enableAppUser(String email);
 }
