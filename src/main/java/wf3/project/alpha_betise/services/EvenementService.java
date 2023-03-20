@@ -14,4 +14,8 @@ public interface EvenementService {
 	public Evenement post(Evenement evenement);
 
 	public void delete(Long id);
+
+	public List<EvenementDto> getNextEvent();
+
+	public List<EvenementDto> getPastEvent();
 }

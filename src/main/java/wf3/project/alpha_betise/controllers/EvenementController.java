@@ -41,4 +41,14 @@ public class EvenementController {
 	public void delete(@PathVariable("id") Long id) {
 		evenementService.delete(id);
 	}
+
+	@GetMapping("/next-event")
+	public List<EvenementDto> getNextEvent() {
+		return evenementService.getNextEvent();
+	}
+
+	@GetMapping("/past-event")
+	public List<EvenementDto> getPastEvent() {
+		return evenementService.getPastEvent();
+	}
 }
