@@ -1,5 +1,6 @@
 package wf3.project.alpha_betise.services.impl;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,6 +41,16 @@ public class EvenementServiceImpl implements EvenementService {
 	@Override
 	public void delete(Long id) {
 		evenementRepository.deleteById(id);
+	}
+
+	@Override
+	public List<EvenementDto> getNextEvent() {
+		return evenementMapper.toDtos(evenementRepository.getNextEvent(LocalDate.now()));
+	}
+
+	@Override
+	public List<EvenementDto> getPastEvent() {
+		return evenementMapper.toDtos(evenementRepository.getPastEvent(LocalDate.now()));
 	}
 
 }
