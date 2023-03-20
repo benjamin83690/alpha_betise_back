@@ -56,7 +56,7 @@ public class Utilisateur implements UserDetails {
 
 	private String photo;
 	
-	private final Boolean activer = false;
+	private Boolean activer;
 
 	@Enumerated(EnumType.STRING)
 	private Role role;

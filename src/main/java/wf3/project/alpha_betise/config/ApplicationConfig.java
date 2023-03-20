@@ -12,6 +12,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import lombok.RequiredArgsConstructor;
+import wf3.project.alpha_betise.entities.Role;
+import wf3.project.alpha_betise.entities.Utilisateur;
 import wf3.project.alpha_betise.repositories.UtilisateurRepository;
 
 @Configuration
@@ -22,7 +24,6 @@ public class ApplicationConfig {
 
 	@Bean
 	UserDetailsService userDetailsService() {
-
 
 		return username -> utilisateurRepository.findByEmail(username)
 				.orElseThrow(() -> new UsernameNotFoundException("Utilisateur introuvable"));
@@ -44,5 +45,13 @@ public class ApplicationConfig {
 	@Bean
 	PasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
+	}
+
+	@Bean
+	Utilisateur createAdmin() {
+		Utilisateur admin = new Utilisateur(1L, "admin", "ben", "admin@gmail.com",
+				passwordEncoder().encode("123"), null, true, Role.ADMIN, null, null, null);
+
+		return utilisateurRepository.save(admin);
 	}
 }
