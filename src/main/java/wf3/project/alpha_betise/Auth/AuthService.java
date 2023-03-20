@@ -40,7 +40,7 @@ public class AuthService {
 
 		var utilisateur = Utilisateur.builder().prenom(request.getPrenom()).nom(request.getNom())
 				.email(request.getEmail()).motDePasse(passwordEncoder.encode(request.getMotDePasse()))
-				.role(Role.USER)
+				.role(Role.USER).activer(false)
 				.build();
 		utilisateurRepository.save(utilisateur);
 		var token = utilisateurService.signUpUser(utilisateur);
