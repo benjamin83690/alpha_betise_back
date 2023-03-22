@@ -73,7 +73,6 @@ public class Livre {
 
 	@ManyToOne
     @JoinColumn(name = "categorie_livre_id")
-//	@JsonIgnore
     private CategorieLivre categorieLivre;
 
 	@ManyToOne
@@ -84,8 +83,7 @@ public class Livre {
     @JoinColumn(name = "editeur_id")
     private Editeur editeur;
 
-	@OneToMany(mappedBy = "livre", cascade = CascadeType.REMOVE)
-    private List<PhotoLivre> photosLivre;
+	private String photoLivre;
 
 	@ManyToOne
     @JoinColumn(name = "langue_id")
@@ -102,7 +100,7 @@ public class Livre {
     @JoinTable(
             name = "auteurs_livres",
 			joinColumns = @JoinColumn(name = "livre_isbn"), inverseJoinColumns = @JoinColumn(name = "auteur_id"))
-    private List<Auteur> auteurs;
+	private List<Auteur> auteurs;
 
 	@OneToMany(mappedBy = "livre", fetch = FetchType.LAZY)
     private List<DetailCommande> detailsCommande;

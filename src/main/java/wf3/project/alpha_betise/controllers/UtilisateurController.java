@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import wf3.project.alpha_betise.dtos.UtilisateurDto;
 import wf3.project.alpha_betise.entities.Utilisateur;
 import wf3.project.alpha_betise.services.UtilisateurService;
 
@@ -27,7 +28,7 @@ public class UtilisateurController {
 	}
 
 	@GetMapping("/{email}")
-	public Utilisateur get(@PathVariable("email") String email) throws Exception {
+	public UtilisateurDto get(@PathVariable("email") String email) throws Exception {
 		return utilisateurService.get(email);
 	}
 

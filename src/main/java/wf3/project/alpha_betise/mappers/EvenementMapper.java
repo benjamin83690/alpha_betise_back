@@ -8,5 +8,4 @@ import wf3.project.alpha_betise.entities.Evenement;
 
 @Mapper(config = MapperInjectionConfig.class)
 public interface EvenementMapper extends EntityDtoMapper<Evenement, EvenementDto> {
-//	EvenementMapper INSTANCE = Mappers.getMapper(EvenementMapper.class);
 }

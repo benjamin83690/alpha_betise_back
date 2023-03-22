@@ -7,9 +7,9 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class PhotoLivreDto {
+public class CollectionLivreDto {
 
 	private Long id;
 
-	private String pathUrl;
+	private String nom;
 }

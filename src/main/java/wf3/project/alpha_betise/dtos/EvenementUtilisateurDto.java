@@ -2,7 +2,6 @@ package wf3.project.alpha_betise.dtos;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.List;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -11,13 +10,11 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class EvenementDto {
+public class EvenementUtilisateurDto {
 
 	private Long id;
 
 	private String titre;
-
-	private Integer maxParticipants;
 
 	private String agePublic;
 
@@ -34,10 +31,4 @@ public class EvenementDto {
 	private LocalDate date;
 
 	private LocalTime heureEvenement;
-
-	private List<UtilisateurEvenementDto> utilisateurs;
-
-	private LivreEvenementDto livre;
-
-	private List<AuteurDto> auteurs;
 }

@@ -7,9 +7,9 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class LivreEvenementDto {
+public class CategorieLivreDto {
 
-	private Long isbn;
-	private String titre;
-	private String photoLivre;
+	private Long id;
+
+	private String libelle;
 }
