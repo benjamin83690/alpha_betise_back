@@ -1,5 +1,7 @@
 package wf3.project.alpha_betise.dtos;
 
+import java.util.List;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -7,9 +9,9 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class LivreEvenementDto {
+public class AuteurDto {
 
-	private Long isbn;
-	private String titre;
-	private String photoLivre;
+	private Long id;
+	private String nom;
+	private List<LivreTitreDto> livres;
 }

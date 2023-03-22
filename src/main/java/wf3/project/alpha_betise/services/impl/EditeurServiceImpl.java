@@ -2,6 +2,7 @@ package wf3.project.alpha_betise.services.impl;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -13,7 +14,8 @@ import wf3.project.alpha_betise.services.EditeurService;
 @Transactional
 public class EditeurServiceImpl implements EditeurService {
 
-    EditeurRepository editeurRepository;
+	@Autowired
+	private EditeurRepository editeurRepository;
 
     @Override
     public List<Editeur> getAll() {

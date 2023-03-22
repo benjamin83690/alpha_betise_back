@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import wf3.project.alpha_betise.entities.Livre;
+import wf3.project.alpha_betise.dtos.LivreDto;
 import wf3.project.alpha_betise.services.LivreService;
 
 @RestController
@@ -22,17 +22,17 @@ public class LivreController {
     private LivreService livreService;
 
     @GetMapping("/all")
-    public List<Livre> getAll() {
+	public List<LivreDto> getAll() {
         return livreService.getAll();
     }
 
     @GetMapping("/{id}")
-    public Livre get(@PathVariable("id") Long id) throws Exception {
+	public LivreDto get(@PathVariable("id") Long id) throws Exception {
         return livreService.get(id);
     }
 
     @PostMapping
-	public Livre post(@RequestBody Livre livre) {
+	public LivreDto post(@RequestBody LivreDto livre) {
         return livreService.post(livre);
     }
 

@@ -49,20 +49,15 @@ INSERT INTO auteurs (auteur_id, nom) VALUES 	(1, 'PEREZ'), (2, 'LACOMBE'), (3, '
 ------------------------------ LIVRE --------------------------------
 ---------------------------------------------------------------------
 INSERT INTO livres (isbn, titre, prix, resume, nb_pages, date_publication, poids, nb_exemplaires, longueur,
-largeur, epaisseur, categorie_livre_id, collection_id, editeur_id, langue_id, etat_stock_id)
+largeur, epaisseur, categorie_livre_id, collection_id, editeur_id, langue_id, etat_stock_id, photo_livre)
 VALUES (9782226453587, "CORALINE", 19.90, 
 "Coraline vient d'emménager dans une étrange maison et, comme ses parents n'ont pas le temps de s'occuper d'elle, elle décide de jouer les exploratrices. Ouvrant une porte condamnée, elle pénètre dans un appartement identique au sien. Identique, et pourtant... Dans la droite ligne d'Alice au pays des merveilles, ce roman à l'atmosphère inoubliable a déjà conquis des millions de lecteurs. A partir de 13 ans",
-335, "2012-05-06", 87, 50, 20, 15, 6, 3, 1, 1, 1, 1);
+335, "2012-05-06", 87, 50, 20, 15, 6, 3, 1, 1, 1, 1, 'https://www.lalibrairie.com/cache/img/livres/112/9791037507112-xs.webp');
 
 ---------------------------------------------------------------------
 ------------------------------ AuteursLivre -------------------------
 ---------------------------------------------------------------------
 INSERT INTO auteurs_livres (auteur_id, livre_isbn) VALUES (1,9782226453587);
-
----------------------------------------------------------------------
------------------------------- PHOTO LVRE ---------------------------
----------------------------------------------------------------------
-INSERT INTO photos_livre (id, path_url, livre_isbn) VALUES (1, 'https://www.lalibrairie.com/cache/img/livres/112/9791037507112-xs.webp', 9782226453587);
 
 ---------------------------------------------------------------------
 ------------------------------ EVENEMENT ----------------------------

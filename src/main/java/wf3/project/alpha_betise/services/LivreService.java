@@ -1,16 +1,16 @@
 package wf3.project.alpha_betise.services;
 
-import wf3.project.alpha_betise.entities.Livre;
-
 import java.util.List;
+
+import wf3.project.alpha_betise.dtos.LivreDto;
 
 public interface LivreService {
 
-    public List<Livre> getAll();
+	public List<LivreDto> getAll();
 
-    public Livre get(Long id) throws Exception;
+	public LivreDto get(Long id) throws Exception;
 
-    public Livre post(Livre livre);
+	public LivreDto post(LivreDto livre);
 
     public void delete(Long id);
 }

@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import wf3.project.alpha_betise.entities.Auteur;
+import wf3.project.alpha_betise.dtos.AuteurDto;
 import wf3.project.alpha_betise.services.AuteurService;
 
 @RestController
@@ -22,17 +22,17 @@ public class AuteurController {
 	private AuteurService auteurService;
 
 	@GetMapping("/all")
-	public List<Auteur> getAll() {
+	public List<AuteurDto> getAll() {
 		return auteurService.getAll();
 	}
 
 	@GetMapping("/{id}")
-	public Auteur get(@PathVariable("id") Long id) throws Exception {
+	public AuteurDto get(@PathVariable("id") Long id) throws Exception {
 		return auteurService.get(id);
 	}
 
 	@PostMapping
-	public Auteur post(@RequestBody Auteur auteur) {
+	public AuteurDto post(@RequestBody AuteurDto auteur) {
 		return auteurService.post(auteur);
 	}
 
