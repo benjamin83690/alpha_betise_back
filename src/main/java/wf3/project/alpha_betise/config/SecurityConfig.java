@@ -2,6 +2,7 @@ package wf3.project.alpha_betise.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -21,7 +22,16 @@ public class SecurityConfig {
 
 	@Bean
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-		http.csrf().disable().authorizeHttpRequests().requestMatchers("/**").permitAll().anyRequest()
+		http.csrf().disable().authorizeHttpRequests().requestMatchers(HttpMethod.POST, "/livre").hasAuthority("ADMIN")
+				.requestMatchers(HttpMethod.POST, "/evenements").hasAuthority("ADMIN")
+				.requestMatchers(HttpMethod.GET, "/evenements/all").permitAll()
+				.requestMatchers(HttpMethod.GET, "/livre/all").permitAll()
+				.requestMatchers(HttpMethod.GET, "/livre/{id}").permitAll()
+				.requestMatchers(HttpMethod.GET, "/livre/{id}").permitAll()
+				.requestMatchers(HttpMethod.DELETE, "/evenements").hasAuthority("ADMIN")
+				.requestMatchers(HttpMethod.POST, "/commentaires-utilisateur").hasAuthority("USER")
+				.requestMatchers(HttpMethod.DELETE, "/commentaires-utilisateur").hasAnyAuthority("USER", "ADMIN")
+				.requestMatchers("/auth/**").permitAll().anyRequest()
 				.authenticated().and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
 				.authenticationProvider(authenticationProvider)
 				.addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
