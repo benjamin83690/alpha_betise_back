@@ -21,6 +21,7 @@ import wf3.project.alpha_betise.repositories.UtilisateurRepository;
 public class ApplicationConfig {
 
 	private final UtilisateurRepository utilisateurRepository;
+	private final JwtService jwtService;
 
 	@Bean
 	UserDetailsService userDetailsService() {
@@ -51,6 +52,8 @@ public class ApplicationConfig {
 	Utilisateur createAdmin() {
 		Utilisateur admin = new Utilisateur(1L, "MR.admin", "ben-Admin", "admin@gmail.com",
 				passwordEncoder().encode("123"), null, true, Role.ADMIN, null, null, null);
+		var token = jwtService.generateToken(admin);
+//		System.out.println(token);
 
 		return utilisateurRepository.save(admin);
 	}

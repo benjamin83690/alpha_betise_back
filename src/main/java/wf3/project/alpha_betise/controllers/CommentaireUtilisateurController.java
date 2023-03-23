@@ -15,7 +15,7 @@ import wf3.project.alpha_betise.entities.CommentaireUtilisateur;
 import wf3.project.alpha_betise.services.CommentaireUtilisateurService;
 
 @RestController
-@RequestMapping("/commentaireUtilisateur")
+@RequestMapping("/commentaires-utilisateur")
 public class CommentaireUtilisateurController {
 
 	@Autowired
