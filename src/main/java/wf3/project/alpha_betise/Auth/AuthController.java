@@ -19,12 +19,12 @@ public class AuthController {
 	private final AuthService service;
 
 	@PostMapping("/inscription")
-	public ResponseEntity<AuthResponse> register(@RequestBody RegisterRequest request) {
+	public ResponseEntity<AuthResponseDto> register(@RequestBody RegisterRequestDto request) {
 		return ResponseEntity.ok(service.register(request));
 	}
 
 	@PostMapping("/authentification")
-	public ResponseEntity<AuthResponse> authenticate(@RequestBody AuthRequest request) throws Exception {
+	public ResponseEntity<AuthResponseDto> authenticate(@RequestBody AuthRequestDto request) throws Exception {
 		return ResponseEntity.ok(service.authenticate(request));
 	}
 

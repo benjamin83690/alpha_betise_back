@@ -13,9 +13,9 @@ import lombok.AllArgsConstructor;
 
 @Service
 @AllArgsConstructor
-public class EmailService implements EmailSender {
+public class EmailServiceImpl implements EmailSenderService {
 
-	private final static Logger LOGGER = LoggerFactory.getLogger(EmailService.class);
+	private final static Logger LOGGER = LoggerFactory.getLogger(EmailServiceImpl.class);
 
 	private final JavaMailSender mailSender;
 

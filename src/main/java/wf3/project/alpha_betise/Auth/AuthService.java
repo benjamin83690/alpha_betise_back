@@ -10,7 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.servlet.view.RedirectView;
 
 import lombok.RequiredArgsConstructor;
-import wf3.project.alpha_betise.Auth.email.EmailSender;
+import wf3.project.alpha_betise.Auth.email.EmailSenderService;
 import wf3.project.alpha_betise.Auth.token.ConfirmationToken;
 import wf3.project.alpha_betise.Auth.token.ConfirmationTokenService;
 import wf3.project.alpha_betise.config.JwtService;
@@ -28,10 +28,10 @@ public class AuthService {
 	private final JwtService jwtService;
 	private final AuthenticationManager authenticationManager;
 	private final UtilisateurService utilisateurService;
-	private final EmailSender emailSender;
+	private final EmailSenderService emailSender;
 	private final ConfirmationTokenService confirmationTokenService;
 
-	public AuthResponse register(RegisterRequest request) {
+	public AuthResponseDto register(RegisterRequestDto request) {
 		boolean userExists = utilisateurRepository.findByEmail(request.getEmail()).isPresent();
 
 		if (userExists) {
@@ -47,16 +47,17 @@ public class AuthService {
 		String link = "http://localhost:8080/api/auth/confirm?token=" + token;
 		emailSender.send(request.getEmail(), buildEmail(request.getPrenom(), link));
 		var jwtToken = jwtService.generateToken(utilisateur);
-		return AuthResponse.builder().token(jwtToken).build();
+
+		return AuthResponseDto.builder().token(jwtToken).build();
 	}
 
-	public AuthResponse authenticate(AuthRequest request) throws Exception {
+	public AuthResponseDto authenticate(AuthRequestDto request) throws Exception {
 		authenticationManager
 				.authenticate(new UsernamePasswordAuthenticationToken(request.getEmail(), request.getMotDePasse()));
 		var utilisateur = utilisateurRepository.findByEmail(request.getEmail()).orElseThrow();
 		if (utilisateur.getActiver()) {
 			var jwtToken = jwtService.generateToken(utilisateur);
-			return AuthResponse.builder().token(jwtToken).build();
+			return AuthResponseDto.builder().token(jwtToken).build();
 		} else {
 			throw new Exception("Votre compte n'a pas encore ete valider, veuillez consulter vos emails");
 		}
@@ -65,10 +66,10 @@ public class AuthService {
 	@Transactional
 	public RedirectView confirmToken(String token) {
 		ConfirmationToken confirmationToken = confirmationTokenService.getToken(token)
-				.orElseThrow(() -> new IllegalStateException("token not found"));
+				.orElseThrow(() -> new IllegalStateException("token introuvable"));
 
 		if (confirmationToken.getConfirmedAt() != null) {
-			throw new IllegalStateException("email already confirmed");
+			throw new IllegalStateException("L'email a deja ete confime");
 		}
 
 		LocalDateTime expiredAt = confirmationToken.getExpiresAt();
