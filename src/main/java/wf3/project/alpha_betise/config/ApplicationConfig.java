@@ -50,7 +50,7 @@ public class ApplicationConfig {
 
 	@Bean
 	Utilisateur createAdmin() {
-		Utilisateur admin = new Utilisateur(1L, "MR.admin", "ben-Admin", "admin@gmail.com",
+		Utilisateur admin = new Utilisateur(1L, "Nom-Admin", "Prenom-Admin", "admin@gmail.com",
 				passwordEncoder().encode("123"), null, true, Role.ADMIN, null, null, null);
 		var token = jwtService.generateToken(admin);
 //		System.out.println(token);
