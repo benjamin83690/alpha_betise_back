@@ -11,33 +11,33 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import wf3.project.alpha_betise.entities.EtatCommande;
-import wf3.project.alpha_betise.services.EtatCommandeService;
+import wf3.project.alpha_betise.dtos.etatCommandeDto.EtatCommandeDto;
+import wf3.project.alpha_betise.serviceWrapper.EtatCommandeServiceWrapper;
 
 @RestController
 @RequestMapping("/etats-commandes")
 public class EtatCommandeController {
 
 	@Autowired
-	private EtatCommandeService etatCommandeService;
+	private EtatCommandeServiceWrapper etatCommandeServiceWrapper;
 
 	@GetMapping("/all")
-	public List<EtatCommande> getAll() {
-		return etatCommandeService.getAll();
+	public List<EtatCommandeDto> getAll() {
+		return etatCommandeServiceWrapper.getAll();
 	}
 
 	@GetMapping("/{id}")
-	public EtatCommande get(@PathVariable("id") Long id) throws Exception {
-		return etatCommandeService.get(id);
+	public EtatCommandeDto get(@PathVariable("id") Long id) throws Exception {
+		return etatCommandeServiceWrapper.get(id);
 	}
 
 	@PostMapping
-	public EtatCommande post(@RequestBody EtatCommande etatCommande) {
-		return etatCommandeService.post(etatCommande);
+	public EtatCommandeDto post(@RequestBody EtatCommandeDto etatCommande) {
+		return etatCommandeServiceWrapper.post(etatCommande);
 	}
 
 	@DeleteMapping("/{id}")
 	public void delete(@PathVariable("id") Long id) {
-		etatCommandeService.delete(id);
+		etatCommandeServiceWrapper.delete(id);
 	}
 }

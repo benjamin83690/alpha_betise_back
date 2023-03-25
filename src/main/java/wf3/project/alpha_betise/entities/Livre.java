@@ -77,7 +77,7 @@ public class Livre {
 
 	@ManyToOne
     @JoinColumn(name = "collection_id")
-    private CollectionLivre collectionLivre;
+    private Collection collectionLivre;
 
 	@ManyToOne
     @JoinColumn(name = "editeur_id")

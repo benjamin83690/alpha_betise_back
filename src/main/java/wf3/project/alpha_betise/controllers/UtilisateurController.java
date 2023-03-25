@@ -11,34 +11,33 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import wf3.project.alpha_betise.dtos.UtilisateurDto;
-import wf3.project.alpha_betise.entities.Utilisateur;
-import wf3.project.alpha_betise.services.UtilisateurService;
+import wf3.project.alpha_betise.dtos.utilisateurDto.UtilisateurDto;
+import wf3.project.alpha_betise.serviceWrapper.UtilisateurServiceWrapper;
 
 @RestController
 @RequestMapping("/utilisateur")
 public class UtilisateurController {
 
 	@Autowired
-	private UtilisateurService utilisateurService;
+	private UtilisateurServiceWrapper utilisateurServiceWrapper;
 
 	@GetMapping("/all")
-	public List<Utilisateur> getAll() {
-		return utilisateurService.getAll();
+	public List<UtilisateurDto> getAll() {
+		return utilisateurServiceWrapper.getAll();
 	}
 
 	@GetMapping("/{email}")
 	public UtilisateurDto get(@PathVariable("email") String email) throws Exception {
-		return utilisateurService.get(email);
+		return utilisateurServiceWrapper.get(email);
 	}
 
 	@PostMapping
-	public Utilisateur post(@RequestBody Utilisateur utilisateur) {
-		return utilisateurService.post(utilisateur);
+	public UtilisateurDto post(@RequestBody UtilisateurDto utilisateur) {
+		return utilisateurServiceWrapper.post(utilisateur);
 	}
 
 	@DeleteMapping("/{id}")
 	public void delete(@PathVariable("id") Long id) {
-		utilisateurService.delete(id);
+		utilisateurServiceWrapper.delete(id);
 	}
 }

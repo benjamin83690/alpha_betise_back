@@ -11,32 +11,32 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import wf3.project.alpha_betise.entities.CollectionLivre;
-import wf3.project.alpha_betise.services.CollectionService;
+import wf3.project.alpha_betise.dtos.collectionDto.CollectionDto;
+import wf3.project.alpha_betise.serviceWrapper.CollectionServiceWrapper;
 
 @RestController
 @RequestMapping("/collection")
 public class CollectionController {
 	@Autowired
-	private CollectionService collectionService;
+	private CollectionServiceWrapper collectionServiceWrapper;
 
 	@GetMapping("/all")
-	public List<CollectionLivre> getAll() {
-		return collectionService.getAll();
+	public List<CollectionDto> getAll() {
+		return collectionServiceWrapper.getAll();
 	}
 
 	@GetMapping("/{id}")
-	public CollectionLivre get(@PathVariable("id") Long id) throws Exception {
-		return collectionService.get(id);
+	public CollectionDto get(@PathVariable("id") Long id) throws Exception {
+		return collectionServiceWrapper.get(id);
 	}
 
 	@PostMapping
-	public CollectionLivre post(@RequestBody CollectionLivre collection) {
-		return collectionService.post(collection);
+	public CollectionDto post(@RequestBody CollectionDto collection) {
+		return collectionServiceWrapper.post(collection);
 	}
 
 	@DeleteMapping("{id}")
 	public void delete(@PathVariable("id") Long id) {
-		collectionService.delete(id);
+		collectionServiceWrapper.delete(id);
 	}
 }

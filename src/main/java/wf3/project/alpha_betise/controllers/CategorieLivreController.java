@@ -11,33 +11,33 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import wf3.project.alpha_betise.entities.CategorieLivre;
-import wf3.project.alpha_betise.services.CategorieLivreService;
+import wf3.project.alpha_betise.dtos.categorieLivreDto.CategorieLivreDto;
+import wf3.project.alpha_betise.serviceWrapper.CategorieServiceWrapper;
 
 @RestController
 @RequestMapping("/categorie-livre")
 public class CategorieLivreController {
 
     @Autowired
-    private CategorieLivreService categorieLivreService;
+	private CategorieServiceWrapper categorieServiceWrapper;
 
     @GetMapping("/all")
-    public List<CategorieLivre> getAll() {
-        return categorieLivreService.getAll();
+	public List<CategorieLivreDto> getAll() {
+		return categorieServiceWrapper.getAll();
     }
 
     @GetMapping("/{id}")
-	public CategorieLivre get(@PathVariable("id") Long id) throws Exception {
-        return categorieLivreService.get(id);
+	public CategorieLivreDto get(@PathVariable("id") Long id) throws Exception {
+		return categorieServiceWrapper.get(id);
     }
 
     @PostMapping
-	public CategorieLivre post(@RequestBody CategorieLivre categorieLivre) {
-        return categorieLivreService.post(categorieLivre);
+	public CategorieLivreDto post(@RequestBody CategorieLivreDto categorieLivre) {
+		return categorieServiceWrapper.post(categorieLivre);
     }
 
     @DeleteMapping("/{id}")
 	public void delete(@PathVariable("id") Long id) {
-        categorieLivreService.delete(id);
+		categorieServiceWrapper.delete(id);
     }
 }

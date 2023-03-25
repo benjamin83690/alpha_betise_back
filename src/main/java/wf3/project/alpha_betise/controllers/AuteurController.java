@@ -11,33 +11,33 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import wf3.project.alpha_betise.dtos.AuteurDto;
-import wf3.project.alpha_betise.services.AuteurService;
+import wf3.project.alpha_betise.dtos.auteurDto.AuteurDto;
+import wf3.project.alpha_betise.serviceWrapper.AuteurServiceWrapper;
 
 @RestController
 @RequestMapping("/auteur")
 public class AuteurController {
 
 	@Autowired
-	private AuteurService auteurService;
+	private AuteurServiceWrapper auteurServiceWrapper;
 
 	@GetMapping("/all")
 	public List<AuteurDto> getAll() {
-		return auteurService.getAll();
+		return auteurServiceWrapper.getAll();
 	}
 
 	@GetMapping("/{id}")
 	public AuteurDto get(@PathVariable("id") Long id) throws Exception {
-		return auteurService.get(id);
+		return auteurServiceWrapper.get(id);
 	}
 
 	@PostMapping
 	public AuteurDto post(@RequestBody AuteurDto auteur) {
-		return auteurService.post(auteur);
+		return auteurServiceWrapper.post(auteur);
 	}
 
 	@DeleteMapping("/{id}")
 	public void delete(@PathVariable("id") Long id) {
-		auteurService.delete(id);
+		auteurServiceWrapper.delete(id);
 	}
 }

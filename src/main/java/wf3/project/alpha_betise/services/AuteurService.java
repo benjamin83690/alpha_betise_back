@@ -2,15 +2,15 @@ package wf3.project.alpha_betise.services;
 
 import java.util.List;
 
-import wf3.project.alpha_betise.dtos.AuteurDto;
+import wf3.project.alpha_betise.entities.Auteur;
 
 public interface AuteurService {
 
-	public List<AuteurDto> getAll();
+	public List<Auteur> getAll();
 
-	public AuteurDto get(Long id) throws Exception;
+	public Auteur get(Long id) throws Exception;
 
-	public AuteurDto post(AuteurDto auteur);
+	public Auteur post(Auteur auteur);
 
 	public void delete(Long id);
 }

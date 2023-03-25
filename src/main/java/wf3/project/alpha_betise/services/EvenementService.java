@@ -2,12 +2,11 @@ package wf3.project.alpha_betise.services;
 
 import java.util.List;
 
-import wf3.project.alpha_betise.dtos.EvenementDto;
 import wf3.project.alpha_betise.entities.Evenement;
 
 public interface EvenementService {
 
-	public List<EvenementDto> getAll();
+	public List<Evenement> getAll();
 
 	public Evenement get(Long id) throws Exception;
 
@@ -15,7 +14,7 @@ public interface EvenementService {
 
 	public void delete(Long id);
 
-	public List<EvenementDto> getNextEvent();
+	public List<Evenement> getNextEvent();
 
-	public List<EvenementDto> getPastEvent();
+	public List<Evenement> getPastEvent();
 }

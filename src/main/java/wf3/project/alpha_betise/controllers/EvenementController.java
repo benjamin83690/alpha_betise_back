@@ -12,43 +12,42 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import wf3.project.alpha_betise.dtos.EvenementDto;
-import wf3.project.alpha_betise.entities.Evenement;
-import wf3.project.alpha_betise.services.EvenementService;
+import wf3.project.alpha_betise.serviceWrapper.EvenementServiceWrapper;
 
 @RestController
 @RequestMapping("/evenements")
 public class EvenementController {
 
 	@Autowired
-	private EvenementService evenementService;
+	private EvenementServiceWrapper evenementServiceWrapper;
 
 	@GetMapping("/all")
 	public List<EvenementDto> getAll() {
-		return evenementService.getAll();
+		return evenementServiceWrapper.getAll();
 	}
 
 	@GetMapping("/{id}")
-	public Evenement get(@PathVariable("id") Long id) throws Exception {
-		return evenementService.get(id);
+	public EvenementDto get(@PathVariable("id") Long id) throws Exception {
+		return evenementServiceWrapper.get(id);
 	}
 
 	@PostMapping
-	public Evenement post(@RequestBody Evenement evenement) {
-		return evenementService.post(evenement);
+	public EvenementDto post(@RequestBody EvenementDto evenement) {
+		return evenementServiceWrapper.post(evenement);
 	}
 
 	@DeleteMapping("/{id}")
 	public void delete(@PathVariable("id") Long id) {
-		evenementService.delete(id);
+		evenementServiceWrapper.delete(id);
 	}
 
 	@GetMapping("/next-event")
 	public List<EvenementDto> getNextEvent() {
-		return evenementService.getNextEvent();
+		return evenementServiceWrapper.getNextEvent();
 	}
 
 	@GetMapping("/past-event")
 	public List<EvenementDto> getPastEvent() {
-		return evenementService.getPastEvent();
+		return evenementServiceWrapper.getPastEvent();
 	}
 }
