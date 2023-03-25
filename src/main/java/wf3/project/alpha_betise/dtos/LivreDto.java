@@ -6,6 +6,9 @@ import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import wf3.project.alpha_betise.dtos.auteurDto.AuteurDto;
+import wf3.project.alpha_betise.dtos.categorieLivreDto.CategorieLivreDto;
+import wf3.project.alpha_betise.dtos.collectionDto.CollectionDto;
 import wf3.project.alpha_betise.entities.EtatStock;
 import wf3.project.alpha_betise.entities.Langue;
 
@@ -38,7 +41,7 @@ public class LivreDto {
 
 	private CategorieLivreDto categorieLivre;
 
-	private CollectionLivreDto collectionLivre;
+	private CollectionDto collectionLivre;
 
 	private EditeurDto editeur;
 

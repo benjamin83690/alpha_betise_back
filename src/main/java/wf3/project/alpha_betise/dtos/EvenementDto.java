@@ -7,6 +7,7 @@ import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import wf3.project.alpha_betise.dtos.auteurDto.AuteurDto;
 
 @Data
 @NoArgsConstructor

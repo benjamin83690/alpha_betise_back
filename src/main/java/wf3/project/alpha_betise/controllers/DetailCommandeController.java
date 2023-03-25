@@ -11,33 +11,33 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import wf3.project.alpha_betise.entities.DetailCommande;
-import wf3.project.alpha_betise.services.DetailCommandeService;
+import wf3.project.alpha_betise.dtos.DetailCommandeDto;
+import wf3.project.alpha_betise.serviceWrapper.DetailCommandeServiceWrapper;
 
 @RestController
 @RequestMapping("/detailCommande")
 public class DetailCommandeController {
 
 	@Autowired
-	private DetailCommandeService detailCommandeService;
+	private DetailCommandeServiceWrapper detailCommandeServiceWrapper;
 
 	@GetMapping("/all")
-	public List<DetailCommande> getAll() {
-		return detailCommandeService.getAll();
+	public List<DetailCommandeDto> getAll() {
+		return detailCommandeServiceWrapper.getAll();
 	}
 
 	@GetMapping("/{id}")
-	public DetailCommande get(@PathVariable("id") Long id) throws Exception {
-		return detailCommandeService.get(id);
+	public DetailCommandeDto get(@PathVariable("id") Long id) throws Exception {
+		return detailCommandeServiceWrapper.get(id);
 	}
 
 	@PostMapping
-	public DetailCommande post(@RequestBody DetailCommande detailCommande) {
-		return detailCommandeService.post(detailCommande);
+	public DetailCommandeDto post(@RequestBody DetailCommandeDto detailCommande) {
+		return detailCommandeServiceWrapper.post(detailCommande);
 	}
 
 	@DeleteMapping("/{id}")
 	public void delete(@PathVariable("id") Long id) {
-		detailCommandeService.delete(id);
+		detailCommandeServiceWrapper.delete(id);
 	}
 }

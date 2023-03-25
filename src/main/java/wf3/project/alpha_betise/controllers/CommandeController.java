@@ -11,33 +11,33 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import wf3.project.alpha_betise.entities.Commande;
-import wf3.project.alpha_betise.services.CommandeService;
+import wf3.project.alpha_betise.dtos.commadeDto.CommandeDto;
+import wf3.project.alpha_betise.serviceWrapper.CommandeServiceWrapper;
 
 @RestController
 @RequestMapping("/commande")
 public class CommandeController {
 
 	@Autowired
-	private CommandeService commandeService;
+	private CommandeServiceWrapper commandeServiceWrapper;
 
 	@GetMapping("/all")
-	public List<Commande> getAll() {
-		return commandeService.getAll();
+	public List<CommandeDto> getAll() {
+		return commandeServiceWrapper.getAll();
 	}
 
 	@GetMapping("/{id}")
-	public Commande get(@PathVariable("id") Long id) throws Exception {
-		return commandeService.get(id);
+	public CommandeDto get(@PathVariable("id") Long id) throws Exception {
+		return commandeServiceWrapper.get(id);
 	}
 
 	@PostMapping
-	public Commande post(@RequestBody Commande commande) {
-		return commandeService.post(commande);
+	public CommandeDto post(@RequestBody CommandeDto commande) {
+		return commandeServiceWrapper.post(commande);
 	}
 
 	@DeleteMapping("/{id}")
 	public void delete(@PathVariable("id") Long id) {
-		commandeService.delete(id);
+		commandeServiceWrapper.delete(id);
 	}
 }

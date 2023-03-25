@@ -1,4 +1,4 @@
-package wf3.project.alpha_betise.dtos;
+package wf3.project.alpha_betise.dtos.utilisateurDto;
 
 import java.util.List;
 

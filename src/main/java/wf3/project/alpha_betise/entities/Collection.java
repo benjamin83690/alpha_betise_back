@@ -21,7 +21,7 @@ import lombok.NonNull;
 @AllArgsConstructor
 @Table(name = "collections")
 @JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
-public class CollectionLivre {
+public class Collection {
 	
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

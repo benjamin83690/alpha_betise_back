@@ -11,33 +11,33 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import wf3.project.alpha_betise.entities.EtatStock;
-import wf3.project.alpha_betise.services.EtatStockService;
+import wf3.project.alpha_betise.dtos.etatStockDto.EtatStockDto;
+import wf3.project.alpha_betise.serviceWrapper.EtatStockServiceWrapper;
 
 @RestController
 @RequestMapping("/etat-stock")
 public class EtatStockController {
 
 	@Autowired
-	public EtatStockService etatStockService;
+	public EtatStockServiceWrapper etatStockServiceWrapper;
 
 	@GetMapping("/all")
-	public List<EtatStock> getAll() {
-		return etatStockService.getAll();
+	public List<EtatStockDto> getAll() {
+		return etatStockServiceWrapper.getAll();
 	}
 
 	@GetMapping("/{id}")
-	public EtatStock get(@PathVariable("id") Long id) throws Exception {
-		return etatStockService.get(id);
+	public EtatStockDto get(@PathVariable("id") Long id) throws Exception {
+		return etatStockServiceWrapper.get(id);
 	}
 
 	@PostMapping
-	public EtatStock post(@RequestBody EtatStock etatStock) {
-		return etatStockService.post(etatStock);
+	public EtatStockDto post(@RequestBody EtatStockDto etatStock) {
+		return etatStockServiceWrapper.post(etatStock);
 	}
 
 	@DeleteMapping("/{id}")
 	public void delete(@PathVariable("id") Long id) {
-		etatStockService.delete(id);
+		etatStockServiceWrapper.delete(id);
 	}
 }

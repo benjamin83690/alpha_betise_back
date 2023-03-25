@@ -10,8 +10,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import wf3.project.alpha_betise.Auth.token.ConfirmationToken;
 import wf3.project.alpha_betise.Auth.token.ConfirmationTokenService;
-import wf3.project.alpha_betise.dtos.UtilisateurDto;
-import wf3.project.alpha_betise.dtos.UtilisateurMapper;
 import wf3.project.alpha_betise.entities.Utilisateur;
 import wf3.project.alpha_betise.repositories.UtilisateurRepository;
 import wf3.project.alpha_betise.services.UtilisateurService;
@@ -24,9 +22,6 @@ public class UtilisateurServiceImpl implements UtilisateurService {
 	private UtilisateurRepository utilisateurRepository;
 
 	@Autowired
-	private UtilisateurMapper utilisateurMapper;
-
-	@Autowired
 	ConfirmationTokenService confirmationTokenService;
 
 	@Override
@@ -35,9 +30,8 @@ public class UtilisateurServiceImpl implements UtilisateurService {
 	}
 
 	@Override
-	public UtilisateurDto get(String email) throws Exception {
-		return utilisateurMapper.toDto(
-				utilisateurRepository.findByEmail(email).orElseThrow(() -> new Exception("Utilisateur introuvable")));
+	public Utilisateur get(String email) throws Exception {
+		return utilisateurRepository.findByEmail(email).orElseThrow(() -> new Exception("Utilisateur introuvable"));
 	}
 
 	@Override

@@ -11,33 +11,33 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import wf3.project.alpha_betise.entities.Langue;
-import wf3.project.alpha_betise.services.LangueService;
+import wf3.project.alpha_betise.dtos.langueDto.LangueDto;
+import wf3.project.alpha_betise.serviceWrapper.LangueServiceWrapper;
 
 @RestController
 @RequestMapping("/langue")
 public class LangueController {
 
 	@Autowired
-	public LangueService langueService;
+	public LangueServiceWrapper langueServiceWrapper;
 
 	@GetMapping("/all")
-	public List<Langue> getAll() {
-		return langueService.getAll();
+	public List<LangueDto> getAll() {
+		return langueServiceWrapper.getAll();
 	}
 
 	@GetMapping("/{id}")
-	public Langue get(@PathVariable("id") Long id) throws Exception {
-		return langueService.get(id);
+	public LangueDto get(@PathVariable("id") Long id) throws Exception {
+		return langueServiceWrapper.get(id);
 	}
 	
 	@PostMapping
-	public Langue post(@RequestBody Langue langue) {
-		return langueService.post(langue);
+	public LangueDto post(@RequestBody LangueDto langue) {
+		return langueServiceWrapper.post(langue);
 	}
 	
 	@DeleteMapping("/{id}")
 	public void delete(@PathVariable("id") Long id) {
-		langueService.delete(id);
+		langueServiceWrapper.delete(id);
 	}
 }

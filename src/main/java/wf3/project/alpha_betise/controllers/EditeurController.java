@@ -11,34 +11,34 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import wf3.project.alpha_betise.entities.Editeur;
-import wf3.project.alpha_betise.services.EditeurService;
+import wf3.project.alpha_betise.dtos.EditeurDto;
+import wf3.project.alpha_betise.serviceWrapper.EditeurServiceWrapper;
 
 @RestController
 @RequestMapping("/editeur")
 public class EditeurController {
 
     @Autowired
-    private EditeurService editeurService;
+	private EditeurServiceWrapper editeurServiceWrapper;
 
 
     @GetMapping("/all")
-    public List<Editeur> getAll() {
-        return editeurService.getAll();
+	public List<EditeurDto> getAll() {
+		return editeurServiceWrapper.getAll();
     }
 
     @GetMapping("/{id}")
-	public Editeur get(@PathVariable("id") Long id) throws Exception {
-        return editeurService.get(id);
+	public EditeurDto get(@PathVariable("id") Long id) throws Exception {
+		return editeurServiceWrapper.get(id);
     }
 
     @PostMapping
-	public Editeur post(@RequestBody Editeur editeur) {
-        return editeurService.post(editeur);
+	public EditeurDto post(@RequestBody EditeurDto editeur) {
+		return editeurServiceWrapper.post(editeur);
     }
 
     @DeleteMapping("{id}")
 	public void delete(@PathVariable("id") Long id) {
-        editeurService.delete(id);
+		editeurServiceWrapper.delete(id);
     }
 }

@@ -1,4 +1,4 @@
-package wf3.project.alpha_betise.dtos;
+package wf3.project.alpha_betise.dtos.categorieLivreDto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,9 +7,9 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class CollectionLivreDto {
+public class CategorieLivreDto {
 
 	private Long id;
 
-	private String nom;
+	private String libelle;
 }
