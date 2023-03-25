@@ -5,10 +5,6 @@ import java.util.List;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
-
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -30,8 +26,8 @@ import lombok.NonNull;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "livres")
-@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "isbn", scope = Livre.class)
+//@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
+//@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "isbn", scope = Livre.class)
 public class Livre {
 
     @Id

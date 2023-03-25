@@ -5,8 +5,6 @@ import java.util.List;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -57,6 +55,6 @@ public class Commande {
 
 	@ManyToOne
 	@JoinColumn(name = "etat_commande_id")
-	@JsonIgnore
+//	@JsonIgnore
 	private EtatCommande etatCommande;
 }
