@@ -2,8 +2,6 @@ package wf3.project.alpha_betise.entities;
 
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -21,7 +19,7 @@ import lombok.NonNull;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "editeurs")
-@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
+//@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
 public class Editeur {
 
     @Id
